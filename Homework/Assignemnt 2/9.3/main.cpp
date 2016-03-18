@@ -52,7 +52,8 @@ int main(int argc, char** argv) {
     }
     
     //calculate average score
-    cout<<endl<<"The average score was"<<endl;
+    cout<<endl<<"The average score with the lowest score dropped was"<<endl;
+    avg(array, number);
     cout<<avg(array, number)<<endl; 
     
     //exit
@@ -82,6 +83,15 @@ int marksort(float a[], int n){
 float avg(float a[], int n){
     //declare and initialize variables
     float average=0; //set initial value to 0
+    float low = a[0];
+    float temp = 0;
+    
+    //drop the lowest score
+    for(int i=1; i<n; i++){
+        if(a[i]<low){
+            low=a[i];
+        }
+    }
     
     //create loop to find total value
     for(int i=0; i<n; i++)
@@ -89,7 +99,7 @@ float avg(float a[], int n){
         average += a[i];
     }
     //calculate average
-    average/=n;
+    average=(average-low)/(n-1);
     return average;
     
 }
