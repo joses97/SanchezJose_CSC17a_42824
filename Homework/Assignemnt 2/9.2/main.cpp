@@ -1,0 +1,95 @@
+/* 
+ * File:   main.cpp
+ * Author: Jose Sanchez
+ * Created on March 18 2016
+ * Purpose: problem 9.2
+ *  */
+
+//System Libraries
+#include <iostream>
+#include <iomanip>
+using namespace std;
+
+//User Libraries
+
+//Global Constants
+
+//Function prototypes
+int marksort(float a[], int);
+float avg(float a[], int);
+
+//Execution Begins Here
+int main(int argc, char** argv) {
+    //Declare and initialize variable
+    int number=0;   //initial size of the array    
+    float *array;     //create
+    
+    //display results to 2 decimal places
+    cout<<fixed<<showpoint<<setprecision(2)<<endl;
+    
+    //create  user defined array size
+    cout<<"Please enter the number of students"<<endl;
+    cin>>number;
+    
+    //create dynamic array
+    array = new float[number];
+    
+    //loop to enter array values
+    for(int i=0; i<number; i++)
+    {
+        cout<<"Enter grade for student "<<i+1<<": ";
+        cin>>array[i];
+    }
+    
+    //sort the array in marksort
+    marksort(array, number);
+    
+    //display sorted array
+    cout<<"The scores from highest to lowest"<<endl;
+    for(int i=0; i<number; i++)
+    {   //display the sorted array
+        cout<<array[i]<<endl;
+    }
+    
+    //calculate average score
+    cout<<endl<<"The average score was"<<endl;
+    cout<<avg(array, number)<<endl; 
+    
+    //exit
+    return 0;
+}
+//000000011111111112222222222333333333344444444445555555555666666666677777777778
+//345678901234567890123456789012345678901234567890123456789012345678901234567890
+//                                  Mark Sort
+int marksort(float a[], int n){
+    //outside element
+    for(int i=0; i<n-1; i++)
+    { //inside element
+        for(int j=i+1; j<n; j++)
+        {   //find highest and place at top
+            if(*(a+i) < *(a+j))
+            {
+                float temp = *(a+j);
+                *(a+j) = *(a+i);
+                *(a+i) = temp;
+            }
+        }
+    }
+}
+//000000011111111112222222222333333333344444444445555555555666666666677777777778
+//345678901234567890123456789012345678901234567890123456789012345678901234567890
+//                              Calculate average
+float avg(float a[], int n){
+    //declare and initialize variables
+    float average=0; //set initial value to 0
+    
+    //create loop to find total value
+    for(int i=0; i<n; i++)
+    {
+        average += a[i];
+    }
+    //calculate average
+    average/=n;
+    return average;
+    
+}
