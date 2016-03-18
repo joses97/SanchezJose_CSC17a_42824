@@ -2,7 +2,7 @@
  * File:   main.cpp
  * Author: Jose Sanchez
  * Created on March 18 2016
- * Purpose: problem 9.2
+ * Purpose: problem 9.3
  *  */
 
 //System Libraries
@@ -55,6 +55,9 @@ int main(int argc, char** argv) {
     cout<<endl<<"The average score with the lowest score dropped was"<<endl;
     avg(array, number);
     cout<<avg(array, number)<<endl; 
+    
+    //deallocate memory
+    delete []array;
     
     //exit
     return 0;
