@@ -35,13 +35,13 @@ int* allMem(int& number){
     
     //create dynamic array based on number
     int *array=new int[number]; //create dynamic array
-    cout<<"Fill the array"<<endl;
+    //cout<<"Fill the array"<<endl;
     
     //for loop, to input values to the array
-    for(int i=0; i<number; i++){
-        cout<<"Array at "<<i<<": "; 
-        cin>>array[i]; //input values into the array
-    }
+    //for(int i=0; i<number; i++){
+     //   cout<<"Array at "<<i<<": "; 
+    //    cin>>array[i]; //input values into the array
+    //}
     
     return array;
     
