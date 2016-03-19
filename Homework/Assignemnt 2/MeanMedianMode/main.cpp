@@ -28,6 +28,14 @@ int main(int argc, char** argv) {
     //accuracy 2 decimal places
     cout<<fixed<<showpoint<<setprecision(2);
     
+    //explain
+    cout<<"This program takes a repeated sequence of 0-9 and puts them in "
+            " a dynamic array"<<endl;
+    cout<<"The array is copied, then the copy is sorted to find, average, median"<<endl;
+    cout<<"Could not create code to find mode"<<endl;
+    
+    
+    
     //create array
     array=allMem(number); //make array
     
@@ -145,6 +153,7 @@ int* mode(int a[], int n){
             }
         }
     }
+    //incorrect method to find mode
     //find the mode
     int counter=0;
     int value=array[0];
