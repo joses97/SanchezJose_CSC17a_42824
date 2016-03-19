@@ -145,7 +145,18 @@ int* mode(int a[], int n){
             }
         }
     }
-
-    
+    //find the mode
+    int counter=0;
+    int value=array[0];
+    //for loop
+    for(int i=0; i<n; i++){
+        if(array[i]==value){
+            counter++;
+        }
+        else{
+            value=array[i];
+            counter=0;
+        }
+    }
 }
 
