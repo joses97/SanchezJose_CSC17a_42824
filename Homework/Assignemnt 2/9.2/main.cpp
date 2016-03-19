@@ -15,8 +15,8 @@ using namespace std;
 //Global Constants
 
 //Function prototypes
-int marksort(float a[], int);
-float avg(float a[], int);
+int marksrt(float a[], int); //mark sort
+float avg(float a[], int);  //find average
 
 //Execution Begins Here
 int main(int argc, char** argv) {
@@ -26,6 +26,11 @@ int main(int argc, char** argv) {
     
     //display results to 2 decimal places
     cout<<fixed<<showpoint<<setprecision(2)<<endl;
+    
+    //explain
+    cout<<"Gaddis 8thEd Chapter 9 problem 2"<<endl;
+    cout<<"This program creates a dynamic array, user then fills the array with grades"<<endl;
+    cout<<"Average is then calculated"<<endl;
     
     //create  user defined array size
     cout<<"Please enter the number of students"<<endl;
@@ -42,7 +47,7 @@ int main(int argc, char** argv) {
     }
     
     //sort the array in marksort
-    marksort(array, number);
+    marksrt(array, number);
     
     //display sorted array
     cout<<"The scores from highest to lowest"<<endl;
@@ -63,7 +68,7 @@ int main(int argc, char** argv) {
 //000000011111111112222222222333333333344444444445555555555666666666677777777778
 //345678901234567890123456789012345678901234567890123456789012345678901234567890
 //                                  Mark Sort
-int marksort(float a[], int n){
+int marksrt(float a[], int n){
     //outside element
     for(int i=0; i<n-1; i++)
     { //inside element

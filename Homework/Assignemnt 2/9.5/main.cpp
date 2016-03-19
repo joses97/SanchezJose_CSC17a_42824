@@ -7,7 +7,6 @@
 
 //System Libraries
 #include <iostream>
-#include <iomanip>
 using namespace std;
 
 //User Libraries
@@ -15,7 +14,7 @@ using namespace std;
 //Global Constants
 
 //Function prototypes
-int doSomething(int *x, int *y);
+int doSomething(int *x, int *y); //function name provided by text
 
 //Execution Begins Here
 int main(int argc, char** argv) {
@@ -23,6 +22,11 @@ int main(int argc, char** argv) {
     int a=0; //initialize a to 0    
     int b=0; //initialize b to 0
     
+    //explain
+    cout<<"Gaddis 8thEd Chapter 9 problem 5"<<endl;
+    cout<<"This program takes two numbers entered by the user then multiplies "
+            "each by 10 using pointer, then sums them"<<endl;
+
     cout<<"Enter a number"<<endl;
     cin>>a;
     
@@ -37,10 +41,10 @@ int main(int argc, char** argv) {
 //******************************************************************************
 //******************************************************************************
 //******************************************************************************
-int doSomething(int *x, int *y)
+int doSomething(int *x, int *y) //takes in pointers
 {
-    int temp = *x;
-    *x = *y * 10;
-    *y = temp * 10;
-    return *x + *y;
+    int temp = *x;  //set temp to pointer x 
+    *x = *y * 10;   //set pointer x  equal to pointer y * 10
+    *y = temp * 10; //set pointer y equal to temp * 10
+    return *x + *y; //return pointer x+ pointer y
 }

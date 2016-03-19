@@ -15,15 +15,22 @@ using namespace std;
 //Global Constants
 
 //Function prototypes
-int* allMem(int&);
-int fillAry(int [], int);
-int* dubArr(int [], int);
+int* allMem(int&);          //allocate mem
+int fillAry(int [], int);   //fill the array
+int* dubArr(int [], int);   //double the array and fill rest w/0
 //Execution Begins Here
 int main(int argc, char** argv) {
     //Declare and initialize variable
-    int num=0;
-    int *array;
-    int *newArr;
+    int num=0;      //set num to 0
+    int *array;     //create pointer array
+    int *newArr;    //create pointer newArr
+    
+    //explain
+    cout<<"Gaddis 8thEd Chapter 9 Problem 11"<<endl;
+    cout<<"This program creates an array with user defined size, copies and "
+            " doubles it, fills rest with 0"<<endl;
+    
+    
     //create array
     array=allMem(num);
     //fill the array
