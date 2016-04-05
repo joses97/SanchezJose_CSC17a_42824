@@ -27,6 +27,10 @@ int main(int argc, char** argv) {
     string fileNm;  //name of string
     int array[SIZE] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};  //array
     
+    cout<<"Gaddis 8thEd Chapter 12 Problem 8"<<endl;
+    cout<<"This program takes a file, writes an array to it,  then reads "
+            "it back"<<endl;
+    
     //user enters file name
     cout<<"Enter File Name"<<endl;
     cin>>fileNm;

@@ -29,7 +29,7 @@ int main(int argc, char** argv) {
     ifstream inFile;    //infile
     fstream outFile;    //outfile
     
-    cout<<"Gaddis 8thEd Chapter 10 Problem 4"<<endl;
+    cout<<"Gaddis 8thEd Chapter 12 Problem 7"<<endl;
     cout<<"This program takes a file, and capitalizes the"
             " letter after the period"<<endl;
     cout<<"The program then sends that data to another file"<<endl;
@@ -65,6 +65,7 @@ int main(int argc, char** argv) {
     //out out to file
     outFile<<steam;
     
+    //close files
     outFile.close();
     inFile.close();
     

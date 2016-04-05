@@ -42,6 +42,9 @@ int main(int argc, char** argv) {
     //fixed to two decimal places
     cout<<fixed<<showpoint<<setprecision(2)<<endl;
     
+    //explain
+    cout<<"Gaddis 8thEd Chapter 12 Problem 12"<<endl;
+    cout<<"This program takes a file, fills it with struct data, then reads it"<<endl;
     
     //open the file
     file.open("testFile.dat", ios::out | ios::binary ); 
