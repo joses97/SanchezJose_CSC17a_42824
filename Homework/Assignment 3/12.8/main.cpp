@@ -1,15 +1,15 @@
 /* 
  * File:   main.cpp
  * Author: Jose Sanchez
- * Purpose: 
- * Created on 
+ * Purpose: send file to array, and array to file
+ * Created on April 4, 2016
  */
 
 //System Libraries
 #include <iostream> //i/o
-#include <fstream>
-#include <string>
-#include <cctype>
+#include <fstream>  //file i/0
+#include <string>   //strings
+#include <cctype>   //to upper
 using namespace std;
 
 //User Libraries
@@ -17,20 +17,21 @@ using namespace std;
 //Global Constants
 
 //Function prototypes
-void arrayToFile(string name, int *array, int size);
-void fileToArray(string name, int *array, int size);
+void arrayToFile(string name, int *array, int size); //array to file
+void fileToArray(string name, int *array, int size); //file to array
 
 //Execution Begins Here
 int main(int argc, char** argv) {
     //declare and initialize variables
-    const int SIZE=10;
-    string fileNm;
-    int array[SIZE] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+    const int SIZE=10;  //size
+    string fileNm;  //name of string
+    int array[SIZE] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};  //array
     
     //user enters file name
     cout<<"Enter File Name"<<endl;
     cin>>fileNm;
     
+    //call arrayToFile, fileToArray
     arrayToFile(fileNm, array, SIZE);
     fileToArray(fileNm, array, SIZE);
     

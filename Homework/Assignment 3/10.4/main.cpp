@@ -1,16 +1,16 @@
 /* 
  * File:   main.cpp
  * Author: Jose Sanchez
- * Purpose: 
- * Created on 
+ * Purpose: average number of letters per word
+ * Created on April 3, 2016
  */
 
 //System Libraries
 #include <iostream> //i/o
-#include <iomanip>
-#include <cstring>
-#include <cctype>
-#include <string>
+#include <iomanip>  //formatting
+#include <cstring>  //strings
+#include <cctype>   //to upper
+#include <string> //string
 using namespace std;
 
 //User Libraries
@@ -18,7 +18,7 @@ using namespace std;
 //Global Constants
 
 //Function prototypes
-float avg(char *input);
+float avg(char *input); //avg function
 
 //Execution Begins Here
 int main(int argc, char** argv) {
@@ -26,6 +26,11 @@ int main(int argc, char** argv) {
     const int SIZE=100; //size of character array
     char menu;          //selection for the menu
     char input[SIZE];    //character array
+    
+    //Explain
+    cout<<"Gaddis 8thEd Chapter 10 Problem 4"<<endl;
+    cout<<"This problem takes a string and finds the average number of letters "
+            "per word"<<endl;
     
     //output to 2 decimal places
     cout<<fixed<<showpoint<<setprecision(2)<<endl;

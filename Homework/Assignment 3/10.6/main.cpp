@@ -1,15 +1,15 @@
 /* 
  * File:   main.cpp
  * Author: Jose Sanchez
- * Purpose: 
- * Created on 
+ * Purpose: find number of consonants and vowels
+ * Created on April 3, 2016
  */
 
 //System Libraries
 #include <iostream> //i/o
-#include <cstring>
-#include <cctype>
-#include <string>
+#include <cstring>  //string
+#include <cctype>   //to upper
+#include <string>   //string
 using namespace std;
 
 //User Libraries
@@ -17,8 +17,8 @@ using namespace std;
 //Global Constants
 
 //Function prototypes
-int vowels(char *input);
-int cons(char *input);
+int vowels(char *input); //vowels
+int cons(char *input);  //consonant
 
 
 //Execution Begins Here
@@ -27,7 +27,11 @@ int main(int argc, char** argv) {
     char menu;          //selection for the menu
     char input[SIZE];    //character array
     bool cont=true;      //answer for continuing 
-    char ansr='Y';
+    char ansr='Y';      //asnwr
+    
+    //explain
+    cout<<"Gaddis 8thEd Chapter 10 Problem 6"<<endl;
+    cout<<"This program finds the number of vowels and or consonants "<<endl;
     
     //While loop
     while(cont==true){

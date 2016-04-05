@@ -1,15 +1,15 @@
 /* 
  * File:   main.cpp
  * Author: Jose Sanchez
- * Purpose: 
- * Created on 
+ * Purpose: advanced file i/o
+ * Created on April 3, 2016
  */
 
 //System Libraries
 #include <iostream> //i/o
-#include <fstream>
-#include <string>
-#include <cctype>
+#include <fstream>  //file i/o
+#include <string>   //strings
+#include <cctype>   //to upper
 using namespace std;
 
 //User Libraries
@@ -22,12 +22,18 @@ using namespace std;
 //Execution Begins Here
 int main(int argc, char** argv) {
     //declare and initialize variables
-    const int SIZE=40;
-    char file1[SIZE];
-    char file2[SIZE];
-    string steam;
-    ifstream inFile;
-    fstream outFile;
+    const int SIZE=40; //size of the array
+    char file1[SIZE];   //file name 1
+    char file2[SIZE];   //file name 2
+    string steam;       //string 
+    ifstream inFile;    //infile
+    fstream outFile;    //outfile
+    
+    cout<<"Gaddis 8thEd Chapter 10 Problem 4"<<endl;
+    cout<<"This program takes a file, and capitalizes the"
+            " letter after the period"<<endl;
+    cout<<"The program then sends that data to another file"<<endl;
+    
     
     //enter file name 1
     cout<<"Enter Name of file 1 (File1.txt)"<<endl;
