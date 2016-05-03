@@ -1,0 +1,12 @@
+Welcome to Battleship.
+This game takes place on 10X10 grid.
+The rows are labled A-J.
+The Columns are labled 1-10.
+At the begining you will place your 5 battleships on this grid.
+They can only be places horizontally or vertically. 
+They cannot be placed diagonally!
+The objective of the game is to destroy all the oponents battlships.
+This can only be achieved by hitting all locations in which the enemy battleships are located. 
+Each player gets 5 battleships.
+Sizes are 5, 4, 3, 3, 2.
+Good Luck and have fun!
