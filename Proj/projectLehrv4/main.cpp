@@ -1,8 +1,8 @@
 /* 
  * File:   main.cpp
  * Author: Jose Sanchez
- * Purpose: 
- * Created on 
+ * Purpose: Battleship
+ * Created on 5/3/16
  */
 
 //System Libraries
@@ -10,18 +10,14 @@
 #include <string>
 #include <fstream>
 #include <iomanip>
+#include "proj.h"
 using namespace std;
 
 //User Libraries
 
 //Global Constants
-const int SIZE=10; //max size for grid 
 const int NUMPLAY=2;    //number of players
-//Structures
-struct players{
-    string name; //name of player
-    char board[SIZE][SIZE]; //board of player
-};
+
 //Function prototypes
 void game(players []); //game itself
 void rules();           //rules of the game
@@ -422,8 +418,24 @@ void names(players sortN[]){
     //fill character arrays
     for(int i=0; i<size1; i++){
         name1[i]=sortN[p1].name[i];
+    }
+    
+    for(int i=0; i<size2; i++){
         name2[i]=sortN[p2].name[i];
     }
+    
+    //bubble sort character arrays
+    do{
+        swap=false;
+        for(int count=0; count<(size2-1); count++){
+            if(*(name2+count)>name2[count+1]){
+                temp2=*(name2+count);
+                *(name2+count)=name2[count+1];
+                name2[count+1]=temp2;
+                swap=true;
+            }
+        }
+    }while(swap);
     
     //bubble sort character arrays
     do{
@@ -438,28 +450,17 @@ void names(players sortN[]){
         }
     }while(swap);
     
-    //bubble sort character arrays
-    do{
-        swap=false;
-        for(int count=0; count<(size2-1); count++){
-            if(*(name2+count)>name2[count+1]){
-                temp2=*(name2+count);
-                *(name2+count)=name2[count+1];
-                name2[count+1]=temp2;
-                swap=false;
-            }
-        }
-    }while(swap);
     //output sorted names for player 1
     cout<<sortN[p1].name<<"'s name sorted by alphabetical order is: ";
     for(int i=0; i<size1; i++){
         cout<<*(name1+i);
     }
+    
     //output sorted name for player 2
     cout<<endl<<endl;
     cout<<sortN[p2].name<<"'s name sorted by alphabetical order is:  ";
     for(int i=0; i<size2; i++){
-        cout<<*(name2+i);
+        cout<<name2[i];
     }
     cout<<endl<<endl;
     cout<<"Press Enter to continue"<<endl;
