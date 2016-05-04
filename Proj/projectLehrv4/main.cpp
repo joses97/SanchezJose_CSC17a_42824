@@ -34,6 +34,7 @@ void board(players []);     //create the board of the players
 void locatn(players [], int);   //fill in the board of the players
 void display(players [], int);  //display the board of the players
 void display2(char board[][SIZE][SIZE], int);   //display the guesses of the players
+void names(players []);
 //Execution Begins Here
 int main(int argc, char** argv) {
     //declare and initialize variables
@@ -46,7 +47,7 @@ int main(int argc, char** argv) {
     players* stats = new players[NUMPLAY];
     players* readIn = new players[NUMPLAY];
     
-    //open file
+    //open file for binary output
     file.open("Stats.dat", ios::out | ios::binary);
     
     //display rules
@@ -54,6 +55,9 @@ int main(int argc, char** argv) {
     
     //get user names
     getInfo(stats);
+    
+    //display sorted array
+    names(stats);
 
     //create board 10x10 for players
     board(stats);
@@ -315,7 +319,7 @@ void getInfo(players strctr[]){
     for(int i=0; i<NUMPLAY; i++){
         //enter strctr[i].name
         cout<<"Name of Player "<<i+1<<endl;
-        cin>>strctr[i].name;
+        getline(cin, strctr[i].name);
         cout<<endl;
     }
 }
@@ -403,4 +407,69 @@ bool game(players strctr[]){
         }
     }
     return endGame;
+}
+//sort the names by alphabetical order, then show user sorted names
+//******************************************************************************
+//******************************************************************************
+void names(players sortN[]){
+    //declare and initialize variables
+    int p1=0; //player 1 
+    int p2=1; //player 2
+    bool swap; //bool for swapping
+    char temp;
+    char temp2;
+    int size1=sortN[p1].name.size(); //size of name of player 1
+    int size2=sortN[p2].name.size(); //size of name of player 2 
+    char* name1 = new char[size1];
+    char* name2 = new char[size2];
+    
+    //fill character arrays
+    for(int i=0; i<size1; i++){
+        name1[i]=sortN[p1].name[i];
+        name2[i]=sortN[p2].name[i];
+    }
+    
+    //bubble sort character arrays
+    do{
+        swap=false;
+        for(int count=0; count<(size1-1); count++){
+            if(name1[count]>name1[count+1]){
+                temp=name1[count];
+                name1[count]=name1[count+1];
+                name1[count+1]=temp;
+                swap=true;
+            }
+        }
+    }while(swap);
+    
+    //bubble sort character arrays
+    do{
+        swap=false;
+        for(int count=0; count<(size2-1); count++){
+            if(name2[count]>name2[count+1]){
+                temp2=name2[count];
+                name2[count]=name2[count+1];
+                name2[count+1]=temp2;
+                swap=true;
+            }
+        }
+    }while(swap);
+    //output sorted names for player 1
+    cout<<sortN[p1].name<<"'s name sorted by alphabetical order is: ";
+    for(int i=0; i<size1; i++){
+        cout<<name1[i];
+    }
+    //output sorted name for player 2
+    cout<<endl<<endl;
+    cout<<sortN[p2].name<<"'s name sorted by alphabetical order is:  ";
+    for(int i=0; i<size2; i++){
+        cout<<name2[i];
+    }
+    cout<<endl<<endl;
+    cout<<"Press enter to continue"<<endl;
+    cin.ignore();
+    cout<<endl<<endl;
+    //delete allocated memory
+    delete[] name1;
+    delete[] name2;
 }
