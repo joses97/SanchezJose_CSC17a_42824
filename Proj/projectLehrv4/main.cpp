@@ -23,8 +23,8 @@ const int NUMPLAY=2;    //number of players
 struct players{
     string name; //name of player
     char board[SIZE][SIZE]; //board of player
-    int hit[MAXH]; //hit 
-    int miss[MAXM]; //misses
+    int hit[NUMPLAY]; //hit 
+    int miss[NUMPLAY]; //misses
 };
 //Function prototypes
 bool game(players []); //game itself
@@ -38,14 +38,16 @@ void display2(char board[][SIZE][SIZE], int);   //display the guesses of the pla
 int main(int argc, char** argv) {
     //declare and initialize variables
     fstream file; //file to output
+    fstream rFile; //read in file
     int p1=0;    //player 1 
     int p2=1;    //player 2
     
     //create dynamic structure
     players* stats = new players[NUMPLAY];
+    players* readIn = new players[NUMPLAY];
     
     //open file
-    file.open("Stats.dat", ios::out | ios::in | ios::binary);
+    file.open("Stats.dat", ios::out | ios::binary);
     
     //display rules
     rules();
@@ -72,9 +74,21 @@ int main(int argc, char** argv) {
     
     file.close();  
     
+    
+    rFile.open("Stats.dat", ios::in | ios::binary);
+    rFile.read(reinterpret_cast<char *>(&readIn), sizeof(readIn));
+
+    for(int p=0; p<NUMPLAY; p++){
+        cout<<readIn[p].name<<"'s Board"<<endl;
+        display(readIn, p);
+    }
+    
+    //close file
+    rFile.close();
+    
     //delete dynamic array
     delete[] stats;
-    
+    delete[] readIn;
     return 0;
 }
 //Functions
