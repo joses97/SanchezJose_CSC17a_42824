@@ -23,8 +23,6 @@ const int NUMPLAY=2;    //number of players
 struct players{
     string name; //name of player
     char board[SIZE][SIZE]; //board of player
-    int hit[NUMPLAY]; //hit 
-    int miss[NUMPLAY]; //misses
 };
 //Function prototypes
 bool game(players []); //game itself
