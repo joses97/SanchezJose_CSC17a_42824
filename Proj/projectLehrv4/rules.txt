@@ -1,6 +1,6 @@
 Welcome to Battleship.
 This game takes place on 10X10 grid.
-The rows are labled A-J.
+The rows are labled 1-10.
 The Columns are labled 1-10.
 At the begining you will place your 5 battleships on this grid.
 They can only be places horizontally or vertically. 
@@ -8,5 +8,9 @@ They cannot be placed diagonally!
 The objective of the game is to destroy all the oponents battlships.
 This can only be achieved by hitting all locations in which the enemy battleships are located. 
 Each player gets 5 battleships.
-Sizes are 5, 4, 3, 3, 2.
+The Aircraft Carrier is 5 units in Length.
+The Battleship is 4 Units in Length.
+The Cruiser is 3 Units in Length.
+The Submarine is 3 Units in Length.
+The Destroyer is 2 Units in Length.
 Good Luck and have fun!

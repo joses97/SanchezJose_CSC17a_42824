@@ -143,25 +143,21 @@ void locatn(players strctr[], int p){
     //enter for aircraft carrier
     for(int i=0; i<aircr; i++){
         //enter row and column and validate input for range of 1-10
-        cout<<"Enter row Aircraft Carrier (1-10)(5 Units in length)"<<endl;
-        cin>>row;
-        while(row>10||row<1){
-            cout<<"Off the Grid! Enter valid row position!"<<endl;
+        do{
+            cout<<"Enter row Aircraft Carrier X: 1-10 (5 Units in length)"<<endl;
             cin>>row;
-        }
-        cout<<"Enter Column Aircraft Carrier (1-10)(5 Units in Length)"<<endl;
-        cin>>col;
-        while(col>10||col<1){
-            cout<<"Off the Grid! Enter valid column position!"<<endl;
-            cin>>col;            
-        }
+        }while(row>10||row<1);
+        do{
+            cout<<"Enter Column Aircraft Carrier (1-10)(5 Units in Length)"<<endl;
+            cin>>col;
+        }while(col>10||col<1);
+        
         //if the input already had a letter, repeat input 
         while(strctr[p].board[row-1][col-1]!='-'){
             cout<<"Position occupied! Enter different position"<<endl;
             cout<<"Row: ";
             cin>>row;
-            cout<<endl;
-            cout<<"Column: ";
+            cout<<endl<<"Column: ";
             cin>>col;
         }
         //set char at [row-1][col-1] of board to 'A' for aircraft carrier
@@ -175,25 +171,20 @@ void locatn(players strctr[], int p){
     //enter for battleship
     for(int i=0; i<bShip; i++){
         //enter row and column, and input validate for range;
-        cout<<"Enter row Battleship (1-10)(4 Units in length)"<<endl;
-        cin>>row;
-        while(row>10||row<0){
-            cout<<"Off the Grid! Enter valid row position!"<<endl;
+        do{
+            cout<<"Enter row Battleship (1-10)(4 Units in length)"<<endl;
             cin>>row;
-        }
-        cout<<"Enter Column Battleship (1-10)(4 Units in Length)"<<endl;
-        cin>>col;
-        while(col>10||col<0){
-            cout<<"Off the Grid! Enter valid column position!"<<endl;
-            cin>>col;            
-        }
+        }while(row>10||row<1);
+        do{
+            cout<<"Enter Column Battleship (1-10)(4 Units in Length)"<<endl;
+            cin>>col;
+        }while(col>10||col<1);
         //if the input already had a letter, repeat input 
         while(strctr[p].board[row-1][col-1]!='-'){
             cout<<"Position occupied! Enter different position"<<endl;
             cout<<"Row: ";
             cin>>row;
-            cout<<endl;
-            cout<<"Column: ";
+            cout<<endl<<"Column: ";
             cin>>col;
         }
         //set board at [row-1][col-1] of strctr[p];
@@ -204,25 +195,20 @@ void locatn(players strctr[], int p){
     //enter for cruiser
     for(int i=0; i<crsr; i++){
         //enter row and column, input validate for range 1-10
-        cout<<"Enter row Cruiser (1-10)(3 Units in length)"<<endl;
-        cin>>row;
-        while(row>10||row<0){
-            cout<<"Off the Grid! Enter row valid position!"<<endl;
+        do{
+            cout<<"Enter row Cruiser (1-10)(3 Units in length)"<<endl;
             cin>>row;
-        }
-        cout<<"Enter Column Cruiser (1-10)(3 Units in Length)"<<endl;
-        cin>>col;
-        while(col>10||col<0){
-            cout<<"Off the Grid! Enter valid column position!"<<endl;
-            cin>>col;            
-        }
+        }while(row>10||row<1);
+        do{
+            cout<<"Enter Column Cruiser (1-10)(3 Units in Length)"<<endl;
+            cin>>col;
+        }while(col>10||col<1);
         //if the input already had a letter, repeat input 
         while(strctr[p].board[row-1][col-1]!='-'){
             cout<<"Position occupied! Enter different position"<<endl;
             cout<<"row: ";
             cin>>row;
-            cout<<endl;
-            cout<<"Column: ";
+            cout<<endl<<"Column: ";
             cin>>col;
         }
         //set board at [row-1][col-1] of player at [p] to 'C' and display board
@@ -233,18 +219,14 @@ void locatn(players strctr[], int p){
     //enter for submarine
     for(int i=0; i<sub; i++){
         //enter row and column, input validate for range 1-10
-        cout<<"Enter row Submarine (1-10)(3 Units in length)"<<endl;
-        cin>>row;
-        while(row>10||row<0){
-            cout<<"Off the Grid! Enter valid row position!"<<endl;
+        do{
+            cout<<"Enter row Submarine (1-10)(3 Units in length)"<<endl;
             cin>>row;
-        }
-        cout<<"Enter Column Submarine (1-10)(3 Units in Length)"<<endl;
-        cin>>col;
-        while(col>10||col<0){
-            cout<<"Off the Grid! Enter column valid position!"<<endl;
-            cin>>col;            
-        }
+        }while(row>10||row<1);
+        do{
+            cout<<"Enter Column Submarine (1-10)(3 Units in Length)"<<endl;
+            cin>>col;
+        }while(col>10||col<1);
         //if the input already had a letter, repeat input 
         while(strctr[p].board[row-1][col-1]!='-'){
             cout<<"Position occupied! Enter different position"<<endl;
@@ -262,18 +244,14 @@ void locatn(players strctr[], int p){
     //enter for destroyer
     for(int i=0; i<dest; i++){
         //input row and col, input validate for range 1-10
-        cout<<"Enter row Destroyer (1-10)(2 Units in length)"<<endl;
-        cin>>row;
-        while(row>10||row<0){
-            cout<<"Off the Grid! Enter valid row position!"<<endl;
+        do{
+            cout<<"Enter row Destroyer (1-10)(2 Units in length)"<<endl;
             cin>>row;
-        }
-        cout<<"Enter Column Destroyer (1-10)(2 Units in Length)"<<endl;
-        cin>>col;
-        while(col>10||col<0){
-            cout<<"Off the Grid! Enter valid column position!"<<endl;
-            cin>>col;            
-        }
+        }while(row>10||row<1);
+        do{
+            cout<<"Enter Column Destroyer (1-10)(2 Units in Length)"<<endl;
+            cin>>col;
+        }while(col>10||col<1);
         //if the input already had a letter, repeat input 
         while(strctr[p].board[row-1][col-1]!='-'){
             cout<<"Position occupied! Enter different position"<<endl;
@@ -349,8 +327,6 @@ bool game(players strctr[]){
     int x=0, y=0;   //x position =0, y position =0;
     char boardC[NUMPLAY][SIZE][SIZE]; //3d character array holds user guesses
     bool endGame=false;             //bool for ending the game
-    fstream p1board;
-    fstream p2board;
     
     //for loop to create copy boards to keep track of users info
     for(int p=0; p<NUMPLAY; p++){
