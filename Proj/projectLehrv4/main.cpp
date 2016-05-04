@@ -466,7 +466,7 @@ void names(players sortN[]){
         cout<<*(name2+i);
     }
     cout<<endl<<endl;
-    cout<<"Press enter to continue"<<endl;
+    cout<<"Press Enter to continue"<<endl;
     cin.ignore();
     cout<<endl<<endl;
     //delete allocated memory
