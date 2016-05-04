@@ -69,6 +69,7 @@ int main(int argc, char** argv) {
     //open the "Stats.dat" binary file and read it into a st
     rFile.open("Stats.dat", ios::in | ios::binary);
     rFile.read(reinterpret_cast<char *>(&readIn), sizeof(readIn));
+    //display contents of structure
     for(int p=0; p<NUMPLAY; p++){
         cout<<readIn[p].name<<"'s Board"<<endl;
         display(readIn, p);
@@ -105,6 +106,7 @@ void rules(){
         }
     }
     cout<<endl<<endl<<endl;
+    rules.close();
 }
 //create player 1's board.
 //******************************************************************************
@@ -124,7 +126,7 @@ void board(players strctr[]){
 //******************************************************************************
 void locatn(players strctr[], int p){
     //fill the board with players
-    unsigned short int aircr=5; //size of aircraft carrier
+    short unsigned int aircr=5; //size of aircraft carrier
     short unsigned int bShip=4; //size of battleship
     short unsigned int crsr=3;  //size of cruiser
     short unsigned int sub=3;   //size of submarine
@@ -273,10 +275,8 @@ void display(players strctr[], int plyr){
         for(int j=0; j<SIZE; j++){
             //display strctr[plyr].board[i][j]<<" | "
             cout<<strctr[plyr].board[i][j]<<" | ";
-        }
-        cout<<endl;
-    }
-    cout<<endl;
+        } cout<<endl;
+    } cout<<endl;
 }
 //display the board copies
 //******************************************************************************
@@ -292,10 +292,8 @@ void display2(char board[][SIZE][SIZE], int p){
         for(int j=0; j<SIZE; j++){
             //display board[p][i][j]<<" | "
             cout<<board[p][i][j]<<" | ";
-        }
-        cout<<endl;
-    }
-    cout<<endl;
+        }cout<<endl;
+    }cout<<endl;
 }
 //get user info
 //******************************************************************************
