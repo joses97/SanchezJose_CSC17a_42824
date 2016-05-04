@@ -15,8 +15,6 @@ using namespace std;
 //User Libraries
 
 //Global Constants
-const int MAXH=18;
-const int MAXM=84;
 const int SIZE=10; //max size for grid 
 const int NUMPLAY=2;    //number of players
 //Structures
@@ -25,7 +23,7 @@ struct players{
     char board[SIZE][SIZE]; //board of player
 };
 //Function prototypes
-bool game(players []); //game itself
+void game(players []); //game itself
 void rules();           //rules of the game
 void getInfo(players []);   //get info of the players
 void board(players []);     //create the board of the players
@@ -45,9 +43,6 @@ int main(int argc, char** argv) {
     players* stats = new players[NUMPLAY];
     players* readIn = new players[NUMPLAY];
     
-    //open file for binary output
-    file.open("Stats.dat", ios::out | ios::binary);
-    
     //display rules
     rules();
     
@@ -62,24 +57,22 @@ int main(int argc, char** argv) {
     
     //display and fill in grid, loop twice for both players
     for(int i=0; i<NUMPLAY; i++){
-        cout<<"Enter Ships for "<<stats[i].name<<endl;
-        display(stats, i);  
-        locatn(stats, i);
+       cout<<"Enter Ships for "<<stats[i].name<<endl;
+       display(stats, i);  
+       locatn(stats, i);
     }
 
-    
     //play the game
-    while(!game(stats));
+    game(stats);
     
-    //write struct contents to 
+    //write struct contents to a file "Stats.dat" as binary information
+    file.open("Stats.dat", ios::out | ios::binary);
     file.write(reinterpret_cast<char *>(&stats), sizeof(stats));
-    
     file.close();  
     
-    
+    //open the "Stats.dat" binary file and read it into a st
     rFile.open("Stats.dat", ios::in | ios::binary);
     rFile.read(reinterpret_cast<char *>(&readIn), sizeof(readIn));
-
     for(int p=0; p<NUMPLAY; p++){
         cout<<readIn[p].name<<"'s Board"<<endl;
         display(readIn, p);
@@ -89,8 +82,8 @@ int main(int argc, char** argv) {
     rFile.close();
     
     //delete dynamic array
-    delete[] stats;
-    delete[] readIn;
+    delete stats;
+    delete readIn;
     return 0;
 }
 //Functions
@@ -324,7 +317,7 @@ void getInfo(players strctr[]){
 //play the game
 //******************************************************************************
 //******************************************************************************
-bool game(players strctr[]){
+void game(players strctr[]){
     //declare and initialize variables
     int x=0, y=0;   //x position =0, y position =0;
     char boardC[NUMPLAY][SIZE][SIZE]; //3d character array holds user guesses
@@ -340,7 +333,7 @@ bool game(players strctr[]){
     }
     //while (!endGame)
     while(!endGame){
-        //player 1 turn
+        //player 1 turn and player 2 turn
         for(int p=0, p2=1; p<NUMPLAY; p++, p2--){
             //display board and guesses
             cout<<strctr[p].name<<"'s Board"<<endl;
@@ -348,14 +341,19 @@ bool game(players strctr[]){
             cout<<strctr[p].name<<"'s Guesses"<<endl;
             display2(boardC, p);
 
-            //Player 1 turn, input guess for x and y location
+            //Player 1 turn, input guess for x and y location and input validate
             cout<<strctr[p].name<<"'s Turn!"<<endl;
-            cout<<"Input Guess for Row: ";
-            cin>>x;
-            cout<<endl;
-            cout<<"Input Guess for Column: ";
-            cin>>y;
-            cout<<endl;
+            do{
+                cout<<"Input Guess for Row: ";
+                cin>>x;
+                cout<<endl;
+            }while(x>10||x<1);
+
+            do{
+                cout<<"Input Guess for Column: ";
+                cin>>y;
+                cout<<endl;
+            }while(y>10||y<1);
 
             //if the the x and y == letter then mark hit on player 1's copy board
             if(strctr[p2].board[x-1][y-1]!='-'){
@@ -396,6 +394,7 @@ bool game(players strctr[]){
                     }
                 }
             }
+            //check for win
             for(int i=0; i<NUMPLAY; i++){
                 if(count[i]>=17){
                     cout<<"GAME OVER! "<<strctr[i].name<<" WINS!"<<endl;
@@ -404,7 +403,6 @@ bool game(players strctr[]){
             }
         }
     }
-    return endGame;
 }
 //sort the names by alphabetical order, then show user sorted names
 //******************************************************************************
@@ -448,7 +446,7 @@ void names(players sortN[]){
                 temp2=*(name2+count);
                 *(name2+count)=name2[count+1];
                 name2[count+1]=temp2;
-                swap=true;
+                swap=false;
             }
         }
     }while(swap);
