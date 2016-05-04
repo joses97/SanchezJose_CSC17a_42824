@@ -433,9 +433,9 @@ void names(players sortN[]){
     do{
         swap=false;
         for(int count=0; count<(size1-1); count++){
-            if(name1[count]>name1[count+1]){
-                temp=name1[count];
-                name1[count]=name1[count+1];
+            if(*(name1+count)>name1[count+1]){
+                temp=*(name1+count);
+                *(name1+count)=name1[count+1];
                 name1[count+1]=temp;
                 swap=true;
             }
@@ -446,9 +446,9 @@ void names(players sortN[]){
     do{
         swap=false;
         for(int count=0; count<(size2-1); count++){
-            if(name2[count]>name2[count+1]){
-                temp2=name2[count];
-                name2[count]=name2[count+1];
+            if(*(name2+count)>name2[count+1]){
+                temp2=*(name2+count);
+                *(name2+count)=name2[count+1];
                 name2[count+1]=temp2;
                 swap=true;
             }
@@ -457,13 +457,13 @@ void names(players sortN[]){
     //output sorted names for player 1
     cout<<sortN[p1].name<<"'s name sorted by alphabetical order is: ";
     for(int i=0; i<size1; i++){
-        cout<<name1[i];
+        cout<<*(name1+i);
     }
     //output sorted name for player 2
     cout<<endl<<endl;
     cout<<sortN[p2].name<<"'s name sorted by alphabetical order is:  ";
     for(int i=0; i<size2; i++){
-        cout<<name2[i];
+        cout<<*(name2+i);
     }
     cout<<endl<<endl;
     cout<<"Press enter to continue"<<endl;
