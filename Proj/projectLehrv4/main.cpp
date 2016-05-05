@@ -10,11 +10,10 @@
 #include <string>
 #include <fstream>
 #include <iomanip>
-#include "proj.h"
 using namespace std;
 
 //User Libraries
-
+#include "proj.h"
 //Global Constants
 const int NUMPLAY=2;    //number of players
 
@@ -54,10 +53,10 @@ int main(int argc, char** argv) {
     //display and fill in grid, loop twice for both players
     for(int i=0; i<NUMPLAY; i++){
        cout<<"Enter Ships for "<<stats[i].name<<endl;
+       //call display and locatn
        display(stats, i);  
        locatn(stats, i);
     }
-
     //play the game
     game(stats);
     
@@ -66,13 +65,13 @@ int main(int argc, char** argv) {
     file.write(reinterpret_cast<char *>(&stats), sizeof(stats));
     file.close();  
     
-    //open the "Stats.dat" binary file and read it into a st
+    //open the "Stats.dat" binary file and read it into a structure
     rFile.open("Stats.dat", ios::in | ios::binary);
     rFile.read(reinterpret_cast<char *>(&readIn), sizeof(readIn));
-    //display contents of structure
+    //display contents of structure for loop p<NUMPLAY
     for(int p=0; p<NUMPLAY; p++){
-        cout<<readIn[p].name<<"'s Board"<<endl;
-        display(readIn, p);
+        cout<<readIn[p].name<<"'s Board"<<endl; //output readIn[p].name
+        display(readIn, p); //call display
     }
     
     //close file
@@ -81,6 +80,7 @@ int main(int argc, char** argv) {
     //delete dynamic array
     delete stats;
     delete readIn;
+    //exit
     return 0;
 }
 //Functions
@@ -100,12 +100,13 @@ void rules(){
     }
     //else display contents of the .txt
     else{
-        while(! rules.eof()){
-            getline(rules, line);
+        while(! rules.eof()){       //while !rules.eof())
+            getline(rules, line); //call get line
             cout<<line<<endl;
         }
     }
     cout<<endl<<endl<<endl;
+    //close rules file
     rules.close();
 }
 //create player 1's board.
@@ -113,15 +114,15 @@ void rules(){
 //******************************************************************************
 void board(players strctr[]){
     //create the board loop for 2 players, initialize array to '-'
-    for(int p=0; p<NUMPLAY; p++){
-        for(int i=0; i<SIZE; i++){
-            for(int j=0; j<SIZE; j++){
-                strctr[p].board[i][j]='-';
+    for(int p=0; p<NUMPLAY; p++){ // p=0; p<NUMPLAY; p++
+        for(int i=0; i<SIZE; i++){//i=0; i<SIZE; i++
+            for(int j=0; j<SIZE; j++){//int j=0; j<SIZE; j++
+                strctr[p].board[i][j]='-';//strctr[p].board[i][j]='-'
             }  
         }
     }
 }
-//create player 1's board.
+//create player 1's and 2's board
 //******************************************************************************
 //******************************************************************************
 void locatn(players strctr[], int p){
@@ -134,129 +135,129 @@ void locatn(players strctr[], int p){
     short unsigned int row=0;   //row of grid
     short unsigned int col=0;   //column of grid
     //enter for aircraft carrier
-    for(int i=0; i<aircr; i++){
+    for(int i=0; i<aircr; i++){ //for loop  for aircraft carrier
         //enter row and column and validate input for range of 1-10
-        do{
+        do{ //do 
             cout<<"Enter row Aircraft Carrier X: 1-10 (5 Units in length)"<<endl;
-            cin>>row;
-        }while(row>10||row<1);
-        do{
+            cin>>row; //enter row
+        }while(row>10||row<1); //while row>10||row<1
+        do{ //do 
             cout<<"Enter Column Aircraft Carrier (1-10)(5 Units in Length)"<<endl;
-            cin>>col;
-        }while(col>10||col<1);
+            cin>>col; //enter col
+        }while(col>10||col<1); //while(col>10||col<1)
         
         //if the input already had a letter, repeat input 
         while(strctr[p].board[row-1][col-1]!='-'){
             cout<<"Position occupied! Enter different position"<<endl;
             cout<<"Row: ";
-            cin>>row;
+            cin>>row;       //enter row
             cout<<endl<<"Column: ";
-            cin>>col;
+            cin>>col;       //enter column
         }
         //set char at [row-1][col-1] of board to 'A' for aircraft carrier
         strctr[p].board[row-1][col-1]='A';
-        display(strctr, p);
+        display(strctr, p);     // call display
         cout<<endl;
     }
     //reset row and col
     row=0;
     col=0;
     //enter for battleship
-    for(int i=0; i<bShip; i++){
+    for(int i=0; i<bShip; i++){ //for loop battleship
         //enter row and column, and input validate for range;
-        do{
+        do{ //do loop
             cout<<"Enter row Battleship (1-10)(4 Units in length)"<<endl;
-            cin>>row;
-        }while(row>10||row<1);
-        do{
+            cin>>row; //enter row
+        }while(row>10||row<1); //while row>10||row<1
+        do{ //do while loop
             cout<<"Enter Column Battleship (1-10)(4 Units in Length)"<<endl;
-            cin>>col;
-        }while(col>10||col<1);
+            cin>>col; //enter col
+        }while(col>10||col<1); //while(col>10||col<1)
         //if the input already had a letter, repeat input 
         while(strctr[p].board[row-1][col-1]!='-'){
             cout<<"Position occupied! Enter different position"<<endl;
             cout<<"Row: ";
-            cin>>row;
+            cin>>row; //enter row 
             cout<<endl<<"Column: ";
-            cin>>col;
+            cin>>col; //enter column
         }
         //set board at [row-1][col-1] of strctr[p];
         strctr[p].board[row-1][col-1]='B';
-        display(strctr, p);
+        display(strctr, p); //call display function
         cout<<endl;
     }
     //enter for cruiser
-    for(int i=0; i<crsr; i++){
+    for(int i=0; i<crsr; i++){ //for loop for cruiser 
         //enter row and column, input validate for range 1-10
-        do{
+        do{     //do while loop
             cout<<"Enter row Cruiser (1-10)(3 Units in length)"<<endl;
-            cin>>row;
-        }while(row>10||row<1);
-        do{
+            cin>>row; //enter row
+        }while(row>10||row<1); //while row>10||row<1
+        do{     //do while loop
             cout<<"Enter Column Cruiser (1-10)(3 Units in Length)"<<endl;
-            cin>>col;
-        }while(col>10||col<1);
+            cin>>col;   //enter col
+        }while(col>10||col<1); //while(col>10||col<1)
         //if the input already had a letter, repeat input 
         while(strctr[p].board[row-1][col-1]!='-'){
             cout<<"Position occupied! Enter different position"<<endl;
             cout<<"row: ";
-            cin>>row;
+            cin>>row;       //enter row
             cout<<endl<<"Column: ";
-            cin>>col;
+            cin>>col;       //enter col
         }
         //set board at [row-1][col-1] of player at [p] to 'C' and display board
         strctr[p].board[row-1][col-1]='C';
-        display(strctr, p);
+        display(strctr, p);     //call display
         cout<<endl;
     }
     //enter for submarine
-    for(int i=0; i<sub; i++){
+    for(int i=0; i<sub; i++){ //for loop for sub
         //enter row and column, input validate for range 1-10
-        do{
+        do{ //do while loop
             cout<<"Enter row Submarine (1-10)(3 Units in length)"<<endl;
-            cin>>row;
-        }while(row>10||row<1);
-        do{
+            cin>>row; //enter row
+        }while(row>10||row<1); //while row>10||row<1
+        do{ //do while loop
             cout<<"Enter Column Submarine (1-10)(3 Units in Length)"<<endl;
-            cin>>col;
-        }while(col>10||col<1);
+            cin>>col;   //enter col
+        }while(col>10||col<1);      //while(col>10||col<1)
         //if the input already had a letter, repeat input 
         while(strctr[p].board[row-1][col-1]!='-'){
             cout<<"Position occupied! Enter different position"<<endl;
             cout<<"row: ";
-            cin>>row;
+            cin>>row;       //enter row
             cout<<endl;
             cout<<"Column: ";
-            cin>>col;
+            cin>>col;       //enter column
         }
         //strctr[p].board[row-1][col-1]='S' and display board 
         strctr[p].board[row-1][col-1]='S';
-        display(strctr, p);
+        display(strctr, p);     //call display
         cout<<endl;
     }
     //enter for destroyer
-    for(int i=0; i<dest; i++){
+    for(int i=0; i<dest; i++){  //for loop for destroyer
         //input row and col, input validate for range 1-10
-        do{
+        do{ //do while loop
             cout<<"Enter row Destroyer (1-10)(2 Units in length)"<<endl;
-            cin>>row;
-        }while(row>10||row<1);
-        do{
+            cin>>row; //enter row
+        }while(row>10||row<1); //while row>10||row<1
+        do{     //do while loop
             cout<<"Enter Column Destroyer (1-10)(2 Units in Length)"<<endl;
-            cin>>col;
-        }while(col>10||col<1);
+            cin>>col;   //enter col
+        }while(col>10||col<1);      //while(col>10||col<1)
         //if the input already had a letter, repeat input 
         while(strctr[p].board[row-1][col-1]!='-'){
             cout<<"Position occupied! Enter different position"<<endl;
             cout<<"row: ";
-            cin>>row;
+            cin>>row;   //enter row 
             cout<<endl;
             cout<<"Column: ";
-            cin>>col;
+            cin>>col;       //enter col
         }
         //strctr[p].board[row-1][col-1]='D' and run display function
         strctr[p].board[row-1][col-1]='D';
-        display(strctr, p);
+        display(strctr, p);     //call display
         cout<<endl;
     }
     
@@ -271,7 +272,7 @@ void display(players strctr[], int plyr){
     for(int i=0; i<SIZE; i++){
         //output i+1 for left aligned grid
         cout << left << setw(3) << setfill(' ') <<i+1<<"| ";
-        //for looper
+        //for loop
         for(int j=0; j<SIZE; j++){
             //display strctr[plyr].board[i][j]<<" | "
             cout<<strctr[plyr].board[i][j]<<" | ";
@@ -300,7 +301,7 @@ void display2(char board[][SIZE][SIZE], int p){
 //******************************************************************************
 void getInfo(players strctr[]){
     cout<<"Enter names"<<endl;
-    //for loop
+    //for loop i<NUMPLAY
     for(int i=0; i<NUMPLAY; i++){
         //enter strctr[i].name
         cout<<"Name of Player "<<i+1<<endl;
@@ -318,16 +319,16 @@ void game(players strctr[]){
     bool endGame=false;             //bool for ending the game
     
     //for loop to create copy boards to keep track of users info
-    for(int p=0; p<NUMPLAY; p++){
-        for(int i=0; i<SIZE; i++){
-            for(int j=0; j<SIZE; j++){
-                boardC[p][i][j]='-';
+    for(int p=0; p<NUMPLAY; p++){       //p=0; p<NUMPLAY; p++
+        for(int i=0; i<SIZE; i++){      //i=0; i<SIZE; i++
+            for(int j=0; j<SIZE; j++){  //int j=0; j<SIZE; j++
+                boardC[p][i][j]='-';        //boardC[p][i][j]='-'
             }
         }
     }
     //while (!endGame)
     while(!endGame){
-        //player 1 turn and player 2 turn
+        //player turn and player 2 turn
         for(int p=0, p2=1; p<NUMPLAY; p++, p2--){
             //display board and guesses
             cout<<strctr[p].name<<"'s Board"<<endl;
@@ -335,19 +336,19 @@ void game(players strctr[]){
             cout<<strctr[p].name<<"'s Guesses"<<endl;
             display2(boardC, p);
 
-            //Player 1 turn, input guess for x and y location and input validate
+            //Player turn, input guess for x and y location and input validate
             cout<<strctr[p].name<<"'s Turn!"<<endl;
-            do{
+            do{ //do while
                 cout<<"Input Guess for Row: ";
-                cin>>x;
+                cin>>x;     //enter x
                 cout<<endl;
-            }while(x>10||x<1);
+            }while(x>10||x<1); //while(x>10||x<1)
 
-            do{
+            do{ //do while
                 cout<<"Input Guess for Column: ";
-                cin>>y;
+                cin>>y; //enter y
                 cout<<endl;
-            }while(y>10||y<1);
+            }while(y>10||y<1);  //while(y>10||y<1)
 
             //if the the x and y == letter then mark hit on player 1's copy board
             if(strctr[p2].board[x-1][y-1]!='-'){
@@ -362,9 +363,9 @@ void game(players strctr[]){
             }
             //display board and guesses
             cout<<strctr[p].name<<"'s Board"<<endl;
-            display(strctr, p);
+            display(strctr, p); //call display
             cout<<strctr[p].name<<"'s Guesses"<<endl;
-            display2(boardC, p);
+            display2(boardC, p);    //call display2
 
 
             //next players turn 
@@ -379,20 +380,20 @@ void game(players strctr[]){
             //declare and initialize variables
             int count[NUMPLAY]={0}; //2d array to hold number of hits
             //run test for endgame
-            for(int p=0; p<NUMPLAY; p++){
-                for(int i=0; i<SIZE; i++){
-                    for(int j=0; j<SIZE; j++){
-                        if(boardC[p][i][j]=='X'){
-                            count[p]++;
+            for(int p=0; p<NUMPLAY; p++){       //p=0; p<NUMPLAY; p++
+                for(int i=0; i<SIZE; i++){      //i=0; i<SIZE; i++
+                    for(int j=0; j<SIZE; j++){  //j=0; j<SIZE; j++
+                        if(boardC[p][i][j]=='X'){   //if boardC[p][i][j]=='X'
+                            count[p]++;         //calculate count[p]++;
                         }
                     }
                 }
             }
             //check for win
-            for(int i=0; i<NUMPLAY; i++){
-                if(count[i]>=17){
+            for(int i=0; i<NUMPLAY; i++){   //for i=0; i<NUMPLAY; i++
+                if(count[i]>=17){           //if count[i]>=17
                     cout<<"GAME OVER! "<<strctr[i].name<<" WINS!"<<endl;
-                    endGame=true;
+                    endGame=true; //set endGame=true
                 }
             }
         }
@@ -406,23 +407,23 @@ void names(players sortN[]){
     int p1=0; //player 1 
     int p2=1; //player 2
     bool swap; //bool for swapping
-    char temp;
-    char temp2;
+    char temp;  //temp 1
+    char temp2; //temp 2
     int size1=sortN[p1].name.size(); //size of name of player 1
     int size2=sortN[p2].name.size(); //size of name of player 2 
-    char* name1 = new char[size1];
-    char* name2 = new char[size2];
+    char* name1 = new char[size1];  //name 1 dynamic array
+    char* name2 = new char[size2];  //name 2 dynamic array
     
-    //fill character arrays
+    //fill character arrays with for loop i=0; i<size1; i++
     for(int i=0; i<size1; i++){
-        name1[i]=sortN[p1].name[i];
+        name1[i]=sortN[p1].name[i];  //name1[i]=sortN[p1].name[i]
     }
     
-    for(int i=0; i<size2; i++){
-        name2[i]=sortN[p2].name[i];
+    for(int i=0; i<size2; i++){     //i=0; i<size2; i++
+        name2[i]=sortN[p2].name[i]; //name2[i]=sortN[p2].name[i];
     }
     
-    //bubble sort character arrays
+    //bubble sort character arrays for name 2
     do{
         swap=false;
         for(int count=0; count<(size2-1); count++){
@@ -435,7 +436,7 @@ void names(players sortN[]){
         }
     }while(swap);
     
-    //bubble sort character arrays
+    //bubble sort character arrays for name1
     do{
         swap=false;
         for(int count=0; count<(size1-1); count++){
@@ -450,15 +451,15 @@ void names(players sortN[]){
     
     //output sorted names for player 1
     cout<<sortN[p1].name<<"'s name sorted by alphabetical order is: ";
-    for(int i=0; i<size1; i++){
-        cout<<*(name1+i);
+    for(int i=0; i<size1; i++){ //for loop i=0; i<size1; i++
+        cout<<*(name1+i);       //output *(name1+i)
     }
     
     //output sorted name for player 2
     cout<<endl<<endl;
     cout<<sortN[p2].name<<"'s name sorted by alphabetical order is:  ";
-    for(int i=0; i<size2; i++){
-        cout<<name2[i];
+    for(int i=0; i<size2; i++){ //for loop i=0; i<size2; i++
+        cout<<name2[i];         //output name2[i];
     }
     cout<<endl<<endl;
     cout<<"Press Enter to continue"<<endl;
