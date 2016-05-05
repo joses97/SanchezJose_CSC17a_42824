@@ -66,7 +66,7 @@ int main(int argc, char** argv) {
     file.close();  
     
     //open the "Stats.dat" binary file and read it into a structure
-    rFile.open("Stats.dat", ios::in | ios::binary);
+    rFile.open("Stats.dat", ios::in | ios::out | ios::binary);
     rFile.read(reinterpret_cast<char *>(&readIn), sizeof(readIn));
     //display contents of structure for loop p<NUMPLAY
     for(int p=0; p<NUMPLAY; p++){
