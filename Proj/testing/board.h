@@ -15,13 +15,14 @@ using namespace std;
 const int SIZE=10;
 const int NUMSHIP=5;
 
-class board{
+class board : public warShip{
     private:
         static int count;
         char array[SIZE][SIZE];
-        warShip ships[NUMSHIP];
+        warShip *ships;
     public:
         board(){
+            ships = new warShip[NUMSHIP];
             for(int i=0; i<SIZE; i++){
                 for(int j=0; j<SIZE; j++){
                     array[i][j]='-';
@@ -30,10 +31,20 @@ class board{
             count++;
         }    
         
+        
+        ~board(){
+            delete [] ships;
+        }
+        
+        void getShipsCoordinates(int i){
+            cout<<"Ship "<<i+1<<" is located at: "<<ships[i].getxpos()<<" and "
+                    ""<<ships[i].getypos()<<endl;
+        }
+        
         operator int(){
             return count;
         }
-        
+
         void operator = (const board &right){
             for(int i=0; i<SIZE; i++){
                 for(int j=0; j<SIZE; j++){
@@ -75,7 +86,7 @@ class board{
                 array[i][ships[n].getxpos()-1]='X';
             }           
         }
-
+        
 };
 
 int board::count=0;

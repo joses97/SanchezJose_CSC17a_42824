@@ -38,7 +38,7 @@ int main(int argc, char** argv) {
     
     
     player1.display();
-    player1.createships(0, 1, 1, 6, 8);
+    player1.createships(0, 2, 2, 6, 8);
     player1.location(0);
     player1.fillrest(0);
     player1.display();
@@ -49,5 +49,7 @@ int main(int argc, char** argv) {
     copy1=player1;
     copy1.display();
 
+    
+    
     return 0;
 }

@@ -13,30 +13,32 @@
 
 #ifndef SHIPPS_H
 #define SHIPPS_H
+#include <iostream>
+using namespace std;
 
 class warShip{
-private:
-    int xpos;
-    int ypos;
-    int fxpos;
-    int fypos;
-public:
-    battlegship(){
-        xpos=0;
-        ypos=0;
-        fxpos=0;
-        fypos=0;
-    }
-    void battleshipC(int x, int y, int x2, int y2){
-        xpos=x;
-        ypos=y;
-        fxpos=x2;
-        fypos=y2;
-    }
-    int getxpos(){return xpos;}
-    int getypos(){return ypos;}
-    int getfxpos(){return fxpos;}
-    int getfypos(){return fypos;}
+    protected:
+        int xpos;
+        int ypos;
+        int fxpos;
+        int fypos;
+    public:
+        battlegship(){
+            xpos=0;
+            ypos=0;
+            fxpos=0;
+            fypos=0;
+        }
+        void battleshipC(int x, int y, int x2, int y2){
+            xpos=x;
+            ypos=y;
+            fxpos=x2;
+            fypos=y2;
+        }
+        int getxpos() const {return xpos;}
+        int getypos() const {return ypos;}
+        int getfxpos() const {return fxpos;}
+        int getfypos() const {return fypos;}
 };
 
 
