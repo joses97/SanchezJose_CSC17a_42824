@@ -19,14 +19,35 @@ using namespace std;
 /*
  * 
  */
-int main(int argc, char** argv) {
-    board test;
-    test.display(0);
-    test.createships(0, 1, 1, 2, 2);
-    test.location(0);
-    test.display(0);
 
+//functions
+
+
+int main(int argc, char** argv) {
+    int count;
+    board player1;
+    board player2;
+    board copy1;
+    board copy2;
     
+    count=player1;
+    
+    cout<<count<<endl;
+    
+    
+    
+    
+    player1.display();
+    player1.createships(0, 1, 1, 6, 8);
+    player1.location(0);
+    player1.fillrest(0);
+    player1.display();
+    
+    
+    
+    cout<<"Testing copy"<<endl;
+    copy1=player1;
+    copy1.display();
+
     return 0;
 }
-

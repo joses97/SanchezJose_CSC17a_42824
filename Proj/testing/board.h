@@ -8,19 +8,36 @@
 #include "shipps.h"
 #include <iostream>
 using namespace std;
+
+
 #ifndef BOARD_H
 #define	BOARD_H
 const int SIZE=10;
+const int NUMSHIP=5;
 
 class board{
     private:
+        static int count;
         char array[SIZE][SIZE];
-        warShip ships[SIZE];
+        warShip ships[NUMSHIP];
     public:
         board(){
             for(int i=0; i<SIZE; i++){
                 for(int j=0; j<SIZE; j++){
                     array[i][j]='-';
+                }
+            }
+            count++;
+        }    
+        
+        operator int(){
+            return count;
+        }
+        
+        void operator = (const board &right){
+            for(int i=0; i<SIZE; i++){
+                for(int j=0; j<SIZE; j++){
+                    array[i][j]=right.array[i][j];
                 }
             }
         }
@@ -37,8 +54,8 @@ class board{
         
         
         
-        void display(int i){
-            cout<<"1  2  3  4  5  6  7  8  9  10"<<endl;
+        void display(){
+            cout<<"    1   2   3   4   5   6   7   8   9   10"<<endl;
             for(int i=0; i<SIZE; i++){
                 cout<<i+1;
                 for(int j=0; j<SIZE; j++){
@@ -61,6 +78,7 @@ class board{
 
 };
 
+int board::count=0;
 
 #endif	/* BOARD_H */
 
