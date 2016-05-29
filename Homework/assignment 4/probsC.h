@@ -15,6 +15,7 @@ using namespace std;
 
 const int SIZE=19;
 const int SIZE2=8;
+const int SIZE3=12;
 
 #ifndef PROB1_H
 #define PROB1_H
@@ -100,7 +101,7 @@ class Invtry{
 
 };
 
-//problem 2 classes
+//problem 1 chapter 14 class
 //******************************************************************************
 //******************************************************************************
 class numbers{
@@ -116,4 +117,17 @@ class numbers{
 };
 
 #endif /* PROB1_H */
+
+//problem 2 chapter 14 class
+//******************************************************************************
+//******************************************************************************
+class dOfYear{
+    private:
+        int day;
+        static string month[SIZE3];
+    public:
+        dOfYear(int num){day=num;}
+        print();
+        
+};
 

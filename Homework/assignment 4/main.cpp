@@ -265,7 +265,15 @@ void problem7(){
     num.print();
 }
 void problem8(){
+    //number to be entered
+    int number=0;
     
+    cout<<"Entering problem 2 chapter 14"<<endl;
+    //enter a number 1-365 for days
+    cout<<"Enter a number 1-365 to find the date"<<endl;
+    cin>>number;
+    dOfYear days(number);
+    days.print();
 }
 void problem9(){
     

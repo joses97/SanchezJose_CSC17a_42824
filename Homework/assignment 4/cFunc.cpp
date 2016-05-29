@@ -249,7 +249,8 @@ void numbers::print(){
     num3=number%100/10;
     num2=number%1000/100;
     num1=number%10000/1000;
-
+    
+    //print the number 
     if(num1>0){
         cout<<less20[num1-1]<<" "<<thousnd<<endl;
     }
@@ -267,5 +268,50 @@ void numbers::print(){
         cout<<less20[num4-1]<<endl;
     }
      
+}
+//******************************************************************************
+//******************************************************************************
+//******************************************************************************
+//problem 2 chapter 14
+string dOfYear::month[SIZE3]={"January", "February", "March", "April", "May", 
+    "June", "July", "August", "September", "October", "November", "December"};
+dOfYear::print(){
+    int num=day;
+    if(num<=31){
+        cout<<month[0]<<" "<<num<<endl;
+    }
+    else if(num<=59){
+        cout<<month[1]<<" "<<num-31<<endl;
+    }
+    else if(num<=90){
+        cout<<month[2]<<" "<<num-59<<endl;
+    }
+    else if(num<=120){
+        cout<<month[3]<<" "<<num-90<<endl;
+    }
+    else if(num<=151){
+        cout<<month[4]<<" "<<num-120<<endl;
+    }
+    else if(num<=181){
+        cout<<month[5]<<" "<<num-151<<endl;
+    }
+    else if(num<=212){
+        cout<<month[6]<<" "<<num-181<<endl;
+    }
+    else if(num<=243){
+        cout<<month[7]<<" "<<num-212<<endl;
+    }
+    else if(num<=273){
+        cout<<month[8]<<" "<<num-243<<endl;
+    }
+    else if(num<=304){
+        cout<<month[9]<<" "<<num-273<<endl;
+    }
+    else if(num<=334){
+        cout<<month[10]<<" "<<num-304<<endl;
+    }
+    else if(num<=365){
+        cout<<month[11]<<" "<<num-334<<endl;
+    }
 }
 
