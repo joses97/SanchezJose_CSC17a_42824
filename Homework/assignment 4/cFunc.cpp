@@ -215,3 +215,57 @@ Invtry::Invtry(int itNum, int qn, float ct){
 void Invtry::setTCost(){
     totCost = getQuant() * getCost();
 }
+//******************************************************************************
+//******************************************************************************
+//******************************************************************************
+//problem 1 chapter 14 functions //NOTE NOTE NOTE 
+//note to DR. Lehr, was a bit confused as to how they wanted me to do this problem
+//used external help to see and came up with a solution in their format.
+//weve done similar problems to this a million times, Roman numerals, checks etc.
+//interesting to see the same problem in a different way.
+string numbers::less20[SIZE]={"one", "two", "three", "four", "five", "six",
+    "seven", "eight", "nine", "ten", "eleven", "twelve", "thirteen", "fourteen",
+    "fifteen", "sixteen", "seventeen", "eighteen", "nineteen"};
+//******************************************************************************
+//declaration for static member variable
+string numbers::above20[SIZE2]{"twenty", "thirty", "forty", "fifty", "sixty", 
+    "seventy", "eighty", "ninety"};
+//declaration for static member variable"}
+//******************************************************************************
+//declaration for static member variable
+string numbers::hundrd="hundred";
+//******************************************************************************
+//declaration for static member variable
+string numbers::thousnd="thousand";
+//******************************************************************************
+//******************************************************************************
+//******************************************************************************
+void numbers::print(){
+    int num1=number;
+    int num2=number;
+    int num3=number;
+    int num4=number;
+    num4=number%10;
+    num3=number%100/10;
+    num2=number%1000/100;
+    num1=number%10000/1000;
+
+    if(num1>0){
+        cout<<less20[num1-1]<<" "<<thousnd<<endl;
+    }
+    if(num2>0){
+        cout<<less20[num2-1]<<" "<<hundrd<<endl;
+    }
+    if(num3>=2){
+        cout<<above20[num3-2]<<endl;
+        if(num4>0){
+            cout<<less20[num4-1]<<endl;
+        }
+    }
+    else{
+        num4+=10;
+        cout<<less20[num4-1]<<endl;
+    }
+     
+}
+

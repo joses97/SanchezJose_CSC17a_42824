@@ -13,6 +13,8 @@
 #include <string>
 using namespace std;
 
+const int SIZE=19;
+const int SIZE2=8;
 
 #ifndef PROB1_H
 #define PROB1_H
@@ -96,6 +98,21 @@ class Invtry{
         float getCost(){return cost;}
         float getTCost(){return totCost;}
 
+};
+
+//problem 2 classes
+//******************************************************************************
+//******************************************************************************
+class numbers{
+    private:
+        int number; //number
+        static string less20[SIZE];  //array from one to nineteen
+        static string above20[SIZE2]; //array from twenty to ninety
+        static string hundrd; //holds "hundred"
+        static string thousnd;  //holds "thousand"
+    public:
+        numbers(int num){number=num;}
+        void print();
 };
 
 #endif /* PROB1_H */

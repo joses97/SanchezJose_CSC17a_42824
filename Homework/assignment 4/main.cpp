@@ -22,6 +22,11 @@ void problem3();
 void problem4();
 void problem5();
 void problem6();
+void problem7();
+void problem8();
+void problem9();
+void problem10();
+void problem11();
 
 //Begin Execution Here!!!
 int main(int argv,char *argc[]){
@@ -36,6 +41,12 @@ int main(int argv,char *argc[]){
         case 4:    problem4();break;
         case 5:    problem5();break;
         case 6:    problem6();break;
+        case 7:    problem7();break;
+        case 8:    problem8();break;
+        case 9:    problem9();break;
+        case 10:   problem10();break;
+        case 11:   problem11();break;
+
         default:   def(inN);}
     }while(inN>=1&&inN<=6);
     return 0;//
@@ -51,7 +62,15 @@ void Menu(){
     cout<<"Type 3 for problem 3"<<endl;
     cout<<"Type 4 for problem 4"<<endl;
     cout<<"Type 5 for problem 5"<<endl;
-    cout<<"Type 6 for problem 6"<<endl;
+    cout<<"Type 6 for problem 1"<<endl;
+    cout<<endl<<"Chapter 14 problems"<<endl;
+    cout<<"Type 7 for problem 1"<<endl;
+    cout<<"Type 8 for problem 2"<<endl;
+    cout<<"Type 9 for problem 3"<<endl;
+    cout<<"Type 10 for problem 4"<<endl;
+    cout<<"Type 11 for problem 5"<<endl;
+
+    
     cout<<"Type anything else to exit \n"<<endl;
 }
 //******************************************************************************
@@ -67,7 +86,7 @@ int getN(){
 //******************************************************************************
 void problem1(){
     //problem 1
-    cout<<"In problem # 1"<<endl<<endl;
+    cout<<"In problem # 1 chapter 13"<<endl<<endl;
     int day=0, month=0, year=0; //day month and year ints
     
     //enter the day in int
@@ -100,7 +119,7 @@ void problem1(){
 //******************************************************************************
 void problem2(){
     //problem 2
-    cout<<"In problem # 2"<<endl<<endl;
+    cout<<"In problem # 2 chpater 13"<<endl<<endl;
     int numMem=3; //number of employees
     int idnum=0; //initialize id num to 0 
     string depart, post, name; //name department position of the worker
@@ -139,7 +158,7 @@ void problem2(){
 //******************************************************************************
 void problem3(){
     //problem 3
-    cout<<"In problem # 3"<<endl<<endl;
+    cout<<"In problem # 3  chapter 13"<<endl<<endl;
     car test(2008, "Corolla"); //create car object named test with constructor
     //number of time loop is executed
     int number=5;
@@ -159,7 +178,7 @@ void problem3(){
 //******************************************************************************
 void problem4(){
     //problem 4
-    cout<<"In problem # 4"<<endl<<endl;
+    cout<<"In problem # 4 chapter 13"<<endl<<endl;
     //create 3 instances
     int num=3; //size of the array
     int age=0; //age
@@ -192,6 +211,7 @@ void problem4(){
 //******************************************************************************
 //******************************************************************************
 void problem5(){
+    cout<<"In problem #5 chapter 13"<<endl;
     RetailItem item1("Jacket", 12, 59.95);
     RetailItem item2("Designer Jeans", 40, 34.95);
     RetailItem item3("Shirt", 20, 24.95);
@@ -203,7 +223,7 @@ void problem5(){
     cout<<left<<setw(20)<<setfill(' ')<<"Price";
     cout<<endl;
     //item 1
-    cout<<"Item 3   ";
+    cout<<"Item 1  ";
     cout<<left<<setw(20)<<setfill(' ')<<item1.getDesc();
     cout<<left<<setw(20)<<setfill(' ')<<item1.getUnit();
     cout<<left<<setw(20)<<setfill(' ')<<item1.getPrce();
@@ -224,7 +244,7 @@ void problem5(){
 //******************************************************************************
 //******************************************************************************
 void problem6(){
-        cout<<"In problem # 6"<<endl<<endl;
+        cout<<"In problem # 6 chapter 13"<<endl<<endl;
         Invtry test(334, 23, 44.23);
 }
 //******************************************************************************
@@ -232,4 +252,27 @@ void problem6(){
 //******************************************************************************
 void def(int inN){
         cout<<"You typed "<<inN<<" to exit the program"<<endl;
+}
+void problem7(){
+    //number to be entered
+    int number=0;
+    
+    cout<<"Entering problem 1 chapter 14"<<endl;
+    //enter a number 1-9999
+    cout<<"Enter a number 1-9999"<<endl;
+    cin>>number;
+    numbers num(number);
+    num.print();
+}
+void problem8(){
+    
+}
+void problem9(){
+    
+}
+void problem10(){
+    
+}
+void problem11(){
+    
 }
