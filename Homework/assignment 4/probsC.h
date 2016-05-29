@@ -18,80 +18,84 @@ using namespace std;
 #define PROB1_H
 //problem 1 class
 class date{
-private:
-    int day;
-    int month;
-    int year;
-public:
-    date(int, int, int);
-    void getConv();
+    private:
+        int day; //day
+        int month; //month
+        int year; //year
+    public:
+        date(int, int, int); //date constructor
+        void getConv(); //covert
 };
 //problem 2 class
 class info1{
-private:
-    string name;
-    int idNum;
-    string depart;
-    string pos;
-public:
-    info();
-    void receiveInfo();
-    void dispInfo();
+    private:
+        string name; //name 
+        int idNum; //id number
+        string depart; //department
+        string pos; //position
+    public:
+        info(); //defaulted constructor 
+        void setInfo(int num, string name, string depart, string pos); //set info
+        void dispInfo(); //displays info
     
 };  
 //problem 3 class
 class car{
-private:
-    int yrModel;
-    string make;
-    int speed;
-public:
-    car(int, string);
-    void accl();
-    void brake();
+    private:
+        int yrModel; //year of the car
+        string make; //make of the car
+        int speed;  //current speed of the car
+    public:
+        car(int, string);  //constructor accepts for year and make
+        void accl(); //accelerates 
+        void brake(); //slows down
 };
 //problem 4 class
 class info2{
-private:
-    string name;
-    string address;
-    int age;
-    string phone;
-public:
-    void reciInfo();
-    void displInfo();
+    //problem 4
+    private:
+        string name; //name 
+        string address; //address
+        int age;  //age
+        string phone; //phone number
+    public:
+        info2(); //defaulted constructor 
+        void setInfo(int, string, string, string); //set info
+        int getAge();
+        string getName();
+        string getAdd();
+        string getPhne();
 };
 //problem 5 class
 class RetailItem{
-private:
-    string descr; //description
-    int unitsOH;  //units on hand
-    float price;  //retail price
-public:
-    RetailItem(string, int, float);
-    string getDesc();
-    int getUnit();
-    float getPrce();
-};
+    private:
+        string descr; //description
+        int unitsOH;  //units on hand
+        float price;  //retail price
+    public:
+        RetailItem(string, int, float); //constructor
+        string getDesc(); //get description
+        int getUnit();    //get unit
+        float getPrce();   //get price
+    };
 //class for problem 6
 class Invtry{
-private:
-    int itmNum;
-    int quant;
-    float cost;
-    float totCost;
-public:
-    Invtry();
-    Invtry(int, int, float);
-    void setItNum(int num ){itmNum=num;}
-    void setQuant(int num ){quant=num;}
-    void setCost(float num ){cost=num;}
-    void setTCost();
-    int getNum(){return itmNum;}
-    int getQuant(){return quant;}
-    float getCost(){return cost;}
-    float getTCost(){return totCost;}
-    
+    private:
+        int itmNum;
+        int quant;
+        float cost;
+        float totCost;
+    public:
+        Invtry(int, int, float);
+        void setItNum(int num ){itmNum=num;}
+        void setQuant(int num ){quant=num;}
+        void setCost(float num ){cost=num;}
+        void setTCost();
+        int getNum(){return itmNum;}
+        int getQuant(){return quant;}
+        float getCost(){return cost;}
+        float getTCost(){return totCost;}
+
 };
 
 #endif /* PROB1_H */

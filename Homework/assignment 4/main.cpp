@@ -1,7 +1,7 @@
-//Dr. Mark E. Lehr
-//April 4th, 2016]
-//Menu to be used for the midterm
-//homework and final, etc....
+//Jose Sanchez
+//April 4th, 2016
+//Menu for assignment 4
+//homework 
 
 //Library includes Here!!!
 #include <iostream>
@@ -38,7 +38,7 @@ int main(int argv,char *argc[]){
         case 6:    problem6();break;
         default:   def(inN);}
     }while(inN>=1&&inN<=6);
-    return 0;//If midterm not perfect, return something other than 1
+    return 0;//
 }
 //******************************************************************************
 //******************************************************************************
@@ -66,39 +66,64 @@ int getN(){
 //******************************************************************************
 //******************************************************************************
 void problem1(){
+    //problem 1
     cout<<"In problem # 1"<<endl<<endl;
-    int day=0, month=0, year=0;
+    int day=0, month=0, year=0; //day month and year ints
     
-    cout<<"Enter day: ";
+    //enter the day in int
+    cout<<"Enter day in integers: ";
     cin>>day;
+    //while days >3 or  <1
     while(day>31||day<1){
-        cout<<"Invalid day. Enter Day:";
+        cout<<"Invalid day. Enter Day: ";
         cin>>day;
     }
-    
-    cout<<endl<<"Enter month: ";
+    //enter month
+    cout<<endl<<"Enter month in integers: ";
     cin>>month;
+    //while month >12 or <1 
     while(month>12||month<1){
-        cout<<"Invalid month. Enter Month";
+        cout<<"Invalid month. Enter Month: ";
         cin>>month;
     }
+    //enter year
     cout<<endl<<"Enter year: ";
     cin>>year;
     
     //declare class
     date conver(day, month, year);
-    
+    //convert to the 3 asked by the question
     conver.getConv();
 }
 //******************************************************************************
 //******************************************************************************
 //******************************************************************************
 void problem2(){
+    //problem 2
     cout<<"In problem # 2"<<endl<<endl;
-    int numMem=3;
-    info1 pInfo[numMem];
+    int numMem=3; //number of employees
+    int idnum=0; //initialize id num to 0 
+    string depart, post, name; //name department position of the worker
+    info1 pInfo[numMem];    //array of employee objects
+    //for loop to enter info
     for(int i=0; i<numMem; i++){
-        pInfo[i].receiveInfo();
+        cout<<endl<<"Enter Id Number: ";
+        cin>>idnum;
+        cin.ignore();
+        
+        cout<<endl<<"Enter name: ";
+        getline(cin, name);
+
+        
+        cout<<endl<<"Enter Department: ";
+        getline(cin, depart);
+
+        
+        cout<<endl<<"Enter Position: ";
+        getline(cin, post);
+        pInfo[i].setInfo(idnum, name, depart, post);
+        
+        cout<<"Next Employee"<<endl;
     }
     cout<<left<<setw(15)<<setfill(' ')<<"Name";
     cout<<left<<setw(15)<<setfill(' ')<<"ID Number";
@@ -113,13 +138,17 @@ void problem2(){
 //******************************************************************************
 //******************************************************************************
 void problem3(){
+    //problem 3
     cout<<"In problem # 3"<<endl<<endl;
-    car test(2008, "Corolla");
+    car test(2008, "Corolla"); //create car object named test with constructor
+    //number of time loop is executed
     int number=5;
     
+    //loop to accelerate
     for(int i=0; i<number; i++){
         test.accl();
     }
+    //loop to slow down
     for(int i=0; i<number; i++){
         test.brake();
     }   
@@ -129,14 +158,34 @@ void problem3(){
 //******************************************************************************
 //******************************************************************************
 void problem4(){
+    //problem 4
     cout<<"In problem # 4"<<endl<<endl;
     //create 3 instances
-    int num=3;
+    int num=3; //size of the array
+    int age=0; //age
+    string name, addr, phone; //name address and phone number
+    //array of 3 info2 objects to hold 3 persons info.
     info2 stats[num];
     
     for(int i=0; i<num; i++){
-        stats[i].reciInfo();
-        stats[i].displInfo();
+        cout<<"Enter name"<<endl;
+        cin.ignore();   
+        getline(cin, name);
+        cout<<"Enter Address"<<endl;
+        getline(cin, addr);
+        cout<<"Enter Phone Number"<<endl;
+        getline(cin, phone);
+        cout<<"Enter Age"<<endl;
+        cin>>age;
+        stats[i].setInfo(age, name, addr, phone);
+    }
+    
+    for(int i=0; i<num; i++){
+        cout<<"Name:    "<<stats[i].getName()<<endl;
+        cout<<"Age:     "<<stats[i].getAge()<<endl;
+        cout<<"Address: "<<stats[i].getAdd()<<endl;
+        cout<<"Phone:   "<<stats[i].getPhne()<<endl;
+        cout<<endl<<endl;
     }
 }
 //******************************************************************************
@@ -183,222 +232,4 @@ void problem6(){
 //******************************************************************************
 void def(int inN){
         cout<<"You typed "<<inN<<" to exit the program"<<endl;
-}
-//******************************************************************************
-//PROBLEM 1 FUNCTIONS
-//******************************************************************************
-//******************************************************************************
-//******************************************************************************
-//******************************************************************************
-date::date(int d, int m, int y){
-    day=d;
-    month=m;
-    year=y;
-    
-}
-void date::getConv(){
-    string mon;
-    
-    cout<<endl;
-    cout<<"MM/DD/YYYY format"<<endl;
-    cout<<month<<"/"<<day<<"/"<<year<<endl;
-    cout<<endl;
-    
-    //convert month 
-    switch(month){
-        case 1:
-            mon="January";
-            break;
-        case 2:
-            mon="February";
-            break;            
-        case 3:
-            mon="March";
-            break;
-        case 4:
-            mon="April";
-            break;
-        case 5:
-            mon="May";
-            break;
-        case 6:
-            mon="June";
-            break;            
-        case 7:
-            mon="July";
-            break;
-        case 8:
-            mon="August";
-            break;   
-        case 9:
-            mon="September";
-            break;
-        case 10:
-            mon="October";
-            break;            
-        case 11:
-            mon="November";
-            break;
-        case 12:
-            mon="December";
-            break;      
-    }
-    cout<<"MONTH, DD, YYYY format"<<endl;
-    cout<<mon<<" "<<day<<", "<<year<<endl;
-    cout<<endl;
-    cout<<"DD MONTH YYYY format"<<endl;
-    cout<<day<<" "<<mon<<" "<<year<<endl;
-}
-//******************************************************************************
-//problem 2 functions
-//******************************************************************************
-void info1::receiveInfo(){
-    string nam, depar, posit;
-    int num=0;
-    cout<<endl<<"Enter name: ";
-    cin.ignore();
-    getline(cin, nam);
-    cout<<endl<<"Enter Id Number: ";
-    cin>>num;
-    cout<<endl<<"Enter Department: ";
-    cin.ignore();
-    getline(cin, depar);
-    cout<<endl<<"Enter Position: ";
-    getline(cin, posit);
-    
-    name=nam;
-    idNum=num;
-    depart=depar;
-    pos=posit;
-}
-//******************************************************************************
-//******************************************************************************
-//******************************************************************************
-info1::info(){
-    name="";
-    idNum=0;
-    depart="";
-    pos="";
-}
-//******************************************************************************
-//******************************************************************************
-//******************************************************************************
-void info1::dispInfo(){
-
-    cout<<left<<setw(15)<<setfill(' ')<<name;
-    cout<<left<<setw(15)<<setfill(' ')<<idNum;
-    cout<<left<<setw(15)<<setfill(' ')<<depart;
-    cout<<left<<setw(15)<<setfill(' ')<<pos;
-    cout<<endl;
-}
-//******************************************************************************
-//problem 3 functions
-//******************************************************************************
-car::car(int yr, string maker){
-    yrModel=yr;
-    make=maker;
-    speed=0;
-}
-//******************************************************************************
-//******************************************************************************
-//******************************************************************************
-void car::accl(){
-    speed+=5;
-    cout<<"Speed Accelerating: "<<speed<<endl;
-}
-//******************************************************************************
-//******************************************************************************
-//******************************************************************************
-void car::brake(){
-    speed-=5;
-    cout<<"Speed Braking: "<<speed<<endl;
-}
-//******************************************************************************
-//problem 4 functions
-//******************************************************************************
-//******************************************************************************
-//******************************************************************************
-//******************************************************************************
-void info2::reciInfo(){
-    int ag=0;
-    string nam, add, ph;
-    cout<<"Enter name"<<endl;
-    cin.ignore();   
-    getline(cin, nam);
-    cout<<"Enter Address"<<endl;
-    getline(cin, add);
-    cout<<"Enter Phone Number"<<endl;
-    getline(cin, ph);
-    cout<<"Enter Age"<<endl;
-    cin>>ag;
-    
-    age=ag;
-    address=add;
-    name=nam;
-    phone=ph;  
-}
-//******************************************************************************
-//******************************************************************************
-//******************************************************************************
-void info2::displInfo(){
-    cout<<"Name:    "<<name<<endl;
-    cout<<"Address: "<<address<<endl;
-    cout<<"Phone:   "<<phone<<endl;
-    cout<<"Age:     "<<age<<endl;
-}
-//******************************************************************************
-//Problem 5 functions
-//******************************************************************************
-string RetailItem::getDesc(){
-    return descr;
-}
-//******************************************************************************
-//******************************************************************************
-//******************************************************************************
-int RetailItem::getUnit(){
-    return unitsOH;
-}
-//******************************************************************************
-//******************************************************************************
-//******************************************************************************
-float RetailItem::getPrce(){
-    return price;
-}
-//******************************************************************************
-//******************************************************************************
-//******************************************************************************
-RetailItem::RetailItem(string x , int y , float z){
-    descr=x;
-    unitsOH=y;
-    price=z;
-}
-//******************************************************************************
-//Problem 6 functions
-//******************************************************************************
-Invtry::Invtry(){
-    itmNum=0;
-    quant=0;
-    cost=0;
-    totCost=0;
-}
-//******************************************************************************
-//******************************************************************************
-//******************************************************************************
-Invtry::Invtry(int itNum, int qn, float ct){
-    cout<<"Item Number:  "<<itNum<<endl;
-    cout<<"Quantity:     "<<qn<<endl;
-    cout<<"Cost:         "<<ct<<endl;
-    setItNum(itNum);
-    setQuant(qn);
-    setCost(ct);
-    
-    setTCost();
-    
-    cout<<"Total cost: "<<getTCost();
-}
-//******************************************************************************
-//******************************************************************************
-//******************************************************************************
-void Invtry::setTCost(){
-    totCost = getQuant() * getCost();
 }
