@@ -145,3 +145,24 @@ class dOfYear2{
         dOfYear2& operator--();
         dOfYear2 operator--(int);
 };
+//problem 3 chapter 14 class
+//******************************************************************************
+//******************************************************************************
+class NumDays{
+    private:
+        int hours;
+        float days;
+    public:
+        NumDays(){hours=0, days=0;}
+        void setHour(int h){hours=h;}
+        void conv();
+        float getDays(){return days;}
+        NumDays operator+(const NumDays &r);
+        NumDays operator-(const NumDays &r);
+        NumDays& operator++();
+        NumDays operator++(int);
+        NumDays& operator--();
+        NumDays operator--(int);
+        
+};
+

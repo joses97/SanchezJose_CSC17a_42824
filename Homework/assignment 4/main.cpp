@@ -297,6 +297,36 @@ void problem9(){
     days.display();
 }
 void problem10(){
+    //number to be entered
+    int hours=0;
+    float days=0;
+    float days2=0;
+    
+    cout<<"Enter Hours Worked in Whole Numbers"<<endl;
+    cin>>hours;
+    NumDays worked;
+    NumDays wrkd2;
+    NumDays totWork;
+    
+    worked.setHour(hours);
+    wrkd2.setHour(hours);
+    
+    worked.conv();
+    wrkd2.conv();
+    
+    totWork=worked+wrkd2;
+    cout<<"Both objects added "<<totWork.getDays()<<endl;
+    totWork=worked-wrkd2;
+    cout<<"Both object subtracted "<<totWork.getDays()<<endl;
+    
+    cout<<"Days worked ++      " <<endl;
+    ++worked;
+    cout<<"New Days Worked:     "<<worked.getDays()<<endl;
+    cout<<"Days Worked -- twice "<<endl;
+    --worked;
+    --worked;
+    cout<<"Days:                 "<<worked.getDays()<<endl;
+    
     
 }
 void problem11(){
