@@ -276,7 +276,25 @@ void problem8(){
     days.print();
 }
 void problem9(){
+    //number to be entered
+    int number=0;
+    string month;
     
+    cout<<"Entering problem 3 chapter 14"<<endl;
+    //enter month and year
+    cout<<"Enter the Month EX: March"<<endl;
+    cin>>month;
+    cout<<"Enter the day"<<endl;
+    cin>>number;
+    
+    dOfYear2 days(month, number);
+    days.display();
+    cout<<"Adding one to the day"<<endl;
+    ++days;
+    days.display();
+    cout<<"Subtracting one to the day"<<endl;
+    --days;
+    days.display();
 }
 void problem10(){
     

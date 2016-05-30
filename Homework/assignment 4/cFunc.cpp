@@ -314,4 +314,128 @@ dOfYear::print(){
         cout<<month[11]<<" "<<num-334<<endl;
     }
 }
+//******************************************************************************
+//******************************************************************************
+//******************************************************************************
+//problem 2 chapter 14
+dOfYear2::dOfYear2(string m, int n){
+    month=m;
+    day=n;
+    bool invalid=false;
 
+    if(month=="January"){
+        if(day>31||day<0){
+            cout<<"Error invalid day for month Jan"<<endl;
+            invalid=true;
+        }
+    }
+
+    if(month=="February"){
+        if(day>28||day<0){
+            cout<<"Error invalid day for month Feb"<<endl;
+            invalid=true;
+        }
+    }
+    if(month=="March"){
+        if(day>31||day<0){
+            cout<<"Error invalid day for month March"<<endl;
+            invalid=true;
+        }
+    }
+
+    if(month=="April"){
+        if(day>30||day<0){
+            cout<<"Error invalid day for month Aprl"<<endl;
+            invalid=true;
+        }
+    }
+    if(month=="May"){
+        if(day>31||day<0){
+            cout<<"Error invalid day for month May"<<endl;
+            invalid=true;
+        }
+    }
+    if(month=="June"){
+        if(day>30||day<0){
+            cout<<"Error invalid day for month Jun"<<endl;
+            invalid=true;
+        }
+    }
+
+    if(month=="July"){
+        if(day>31||day<0){
+            cout<<"Error invalid day for month Jul"<<endl;
+            invalid=true;
+        }
+    }
+
+    if(month=="August"){
+        if(day>31||day<0){
+            cout<<"Error invalid day for month Aug"<<endl;
+            invalid=true;
+        }
+    }
+    if(month=="September"){
+        if(day>30||day<0){
+            cout<<"Error invalid day for month Sep"<<endl;
+            invalid=true;
+        }
+    }
+
+    if(month=="October"){
+        if(day>31||day<0){
+            cout<<"Error invalid day for month Oct"<<endl;
+            invalid=true;
+        }
+    }
+    if(month=="November"){
+        if(day>30||day<0){
+            cout<<"Error invalid day for month Nov"<<endl;
+            invalid=true;
+        }
+    }
+    if(month=="December"){
+        if(day>31||day<0){
+            cout<<"Error invalid day for month Dec"<<endl;
+            invalid=true;
+        }
+    }
+
+    if(invalid==true){
+        //default day to 2
+        day=2;
+    }
+
+}
+//******************************************************************************
+//******************************************************************************
+//******************************************************************************
+void dOfYear2::display(){
+    cout<<month<<" "<<day<<endl;
+}
+//assistance of Microsoft website for ++ overloading
+//******************************************************************************
+dOfYear2& dOfYear2::operator ++(){
+    day+=1;
+    return *this;
+}
+
+//******************************************************************************
+dOfYear2 dOfYear2::operator ++(int){
+    dOfYear2 temp=*this;
+    ++*this;
+    return temp;
+}
+
+//******************************************************************************
+dOfYear2& dOfYear2::operator --(){
+    day-=1;
+    return *this;
+}
+
+//******************************************************************************
+dOfYear2 dOfYear2::operator --(int){
+    dOfYear2 temp=*this;
+    --*this;
+    return temp;
+}

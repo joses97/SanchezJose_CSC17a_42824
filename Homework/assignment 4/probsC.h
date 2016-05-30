@@ -130,4 +130,18 @@ class dOfYear{
         print();
         
 };
-
+//problem 3 chapter 14 class
+//******************************************************************************
+//******************************************************************************
+class dOfYear2{
+    private:
+        string month;
+        int day;
+    public:
+        dOfYear2(string m , int n);
+        void display();
+        dOfYear2& operator++();
+        dOfYear2 operator++(int);
+        dOfYear2& operator--();
+        dOfYear2 operator--(int);
+};
