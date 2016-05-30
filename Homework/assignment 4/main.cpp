@@ -302,6 +302,7 @@ void problem10(){
     float days=0;
     float days2=0;
     
+    cout<<"Entering problem 4 chapter 14"<<endl;
     cout<<"Enter Hours Worked in Whole Numbers"<<endl;
     cin>>hours;
     NumDays worked;
@@ -330,5 +331,13 @@ void problem10(){
     
 }
 void problem11(){
-    
+    cout<<"Entering problem 5 chapter 14"<<endl;
+    //intialize to random values
+    int skdy=4, skTk=2, mxVc=15, vcTk=4, mxUp=15,upTk=4;
+    string name;
+    cout<<"Enter name: "<<endl;
+    cin>>name;
+    timeOff vacatin(name);
+    vacatin.getInfo(skdy, skTk, mxVc, vcTk, mxUp, upTk);
+    vacatin.display();
 }

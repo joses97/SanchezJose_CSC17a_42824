@@ -145,7 +145,7 @@ class dOfYear2{
         dOfYear2& operator--();
         dOfYear2 operator--(int);
 };
-//problem 3 chapter 14 class
+//problem 4 chapter 14 class
 //******************************************************************************
 //******************************************************************************
 class NumDays{
@@ -164,5 +164,22 @@ class NumDays{
         NumDays& operator--();
         NumDays operator--(int);
         
+};
+//problem 5 chapter 14 class
+//******************************************************************************
+//******************************************************************************
+class timeOff{
+    private:
+        string name;
+        int mxSkDys;
+        int sckTkn; 
+        int mxVactn;
+        int vacnTkn;
+        int mxUnpd;
+        int unpdTkn;
+    public:
+        timeOff(string m){name=m;}
+        void getInfo(int, int, int , int, int, int);
+        void display();
 };
 

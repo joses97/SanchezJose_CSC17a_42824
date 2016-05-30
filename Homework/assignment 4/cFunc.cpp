@@ -495,3 +495,22 @@ NumDays NumDays::operator--(int){
     --*this;
     return temp;
 }
+//problem 5 class functions
+void timeOff::getInfo(int skdy, int skTk, int mxVc, int vcTk,int mxUp,int upTk){
+    mxSkDys=skdy;
+    sckTkn=skTk; 
+    mxVactn=mxVc;
+    vacnTkn=vcTk;
+    mxUnpd=mxUp;
+    unpdTkn=upTk;
+}
+//******************************************************************************
+//******************************************************************************
+void timeOff::display(){
+    cout<<"Max Sick Days:       "<<mxSkDys<<endl;
+    cout<<"Sick days Taken:     "<<sckTkn<<endl;
+    cout<<"Max Vacation Days:   "<<mxVactn<<endl; 
+    cout<<"Vacation days Taken: "<<vacnTkn<<endl;
+    cout<<"Max unpaid Vac Days: "<<mxUnpd<<endl;
+    cout<<"Unpaid Days Taken:   "<<unpdTkn<<endl;
+}
