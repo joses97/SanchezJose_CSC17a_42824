@@ -18,6 +18,7 @@ using namespace std;
 
 class warShip{
     protected:
+        string name;
         int xpos;
         int ypos;
         int fxpos;
@@ -25,11 +26,12 @@ class warShip{
         static int totShip;
     public:
         warShip();
-        void bShipC(int , int , int , int );
+        void bShipC(int , int , int , int, string);
         int getxpos() const {return xpos;}
         int getypos() const {return ypos;}
         int getfxpos() const {return fxpos;}
         int getfypos() const {return fypos;}
+        string getName() const {return name;}
 };
 #endif /* SHIPPS_H */
 

@@ -38,13 +38,12 @@ int main(int argc, char** argv) {
     
     
     player1.display();
-    player1.makeShp(0, 2, 2, 6, 2);
+    player1.makeShp(0, 2, 2, 6, 2, "SS JOSE");
     player1.shipOn(0);
     player1.disCoor(0);
     player1.fillrest(0);
     player1.display();
-    
-    
+    cout<<player1.getN(0)<<endl;
     
     cout<<"Testing copy"<<endl;
     copy1=player1;

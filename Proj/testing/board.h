@@ -26,10 +26,18 @@ class board : public warShip{
         void disCoor(int); 
         operator int(){ return count; }
         void operator = (const board &right);
-        void makeShp(int , int , int , int , int );
+        void makeShp(int , int , int , int , int, string);
+        string getN(int);
         void shipOn(int);
         void display();  
         void fillrest(int);
+        int getNumS(){return totShip;}
+        board operator +(const board &);
+        board operator -(const board &);
+        board& operator++();
+        board operator++(int);
+        board& operator--();
+        board operator--(int);
 };
 
 #endif	/* BOARD_H */
