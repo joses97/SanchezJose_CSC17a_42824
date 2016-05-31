@@ -22,25 +22,14 @@ class warShip{
         int ypos;
         int fxpos;
         int fypos;
+        static int totShip;
     public:
-        battlegship(){
-            xpos=0;
-            ypos=0;
-            fxpos=0;
-            fypos=0;
-        }
-        void battleshipC(int x, int y, int x2, int y2){
-            xpos=x;
-            ypos=y;
-            fxpos=x2;
-            fypos=y2;
-        }
+        warShip();
+        void bShipC(int , int , int , int );
         int getxpos() const {return xpos;}
         int getypos() const {return ypos;}
         int getfxpos() const {return fxpos;}
         int getfypos() const {return fypos;}
 };
-
-
 #endif /* SHIPPS_H */
 

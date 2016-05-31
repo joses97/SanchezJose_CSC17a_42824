@@ -54,7 +54,7 @@ void board::makeShp(int i, int a, int b, int c, int d){
     //fill in values for the array of ships, 
     // a and b are the initial x and y position
     //c and d are the final x and y position
-    ships[i].battleshipC(a, b, c, d);
+    ships[i].bShipC(a, b, c, d);
 }
 //******************************************************************************
 //******************************************************************************
