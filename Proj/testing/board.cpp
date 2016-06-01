@@ -13,7 +13,8 @@ int board::count=0;
 
 //******************************************************************************
 //******************************************************************************
-string board::names[NUMSHIP]={"Battleship", " ", " ", " ", " "};
+string board::names[NUMSHIP]={"Carrier", "Battleship", "Cruiser", "Submarine",
+    "Destroyer"};
 
 //******************************************************************************
 //Defaulted Constructor For creating a board
@@ -34,6 +35,13 @@ board::board(){
 board::~board(){
     //delete the dynamically created array of ships
     delete [] ships;
+}
+//******************************************************************************
+//******************************************************************************
+void board::setSNms(){
+    for(int i=0; i<NUMSHIP; i++){
+        ships[i].setsNam(names[i]);
+    }
 }
 //******************************************************************************
 //******************************************************************************
@@ -60,11 +68,11 @@ void board::operator =(const board& right){
 }
 //******************************************************************************
 //******************************************************************************
-void board::makeShp(int i, int a, int b, int c, int d, string n){
+void board::makeShp(int i, int a, int b, int c, int d){
     //fill in values for the array of ships, 
     // a and b are the initial x and y position
     //c and d are the final x and y position
-    ships[i].bShipC(a, b, c, d, n);
+    ships[i].bShipC(a, b, c, d);
 }
 //******************************************************************************
 //******************************************************************************

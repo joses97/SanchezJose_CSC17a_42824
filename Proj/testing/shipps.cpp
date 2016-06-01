@@ -18,8 +18,7 @@ warShip::warShip(){
 }
 //******************************************************************************
 //******************************************************************************
-void warShip::bShipC(int x, int y , int x2,  int y2, string nam){
-    name=nam;
+void warShip::bShipC(int x, int y , int x2,  int y2){
     xpos=x;
     ypos=y;
     fxpos=x2;

@@ -24,15 +24,16 @@ class board : public warShip{
     public:
         board();
         ~board();
-        void disCoor(int); 
-        operator int(){ return count; }
-        void operator = (const board &right);
-        void makeShp(int , int , int , int , int, string);
         string getN(int);
+        void disCoor(int); 
+        void operator = (const board &right);
+        void setSNms();
+        void makeShp(int , int , int , int , int);
         void shipOn(int);
         void display();  
         void fillrest(int);
         int getNumS(){return totShip;}
+        operator int(){ return count; }
         board operator +(const board &);
         board operator -(const board &);
         board& operator++();

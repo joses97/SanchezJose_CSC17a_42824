@@ -31,6 +31,13 @@ int main(int argc, char** argv) {
     board copy2;
     
     
+    player1.setSNms();
+    cout<<player1.getN(0);
+    cout<<player1.getN(1);
+    cout<<player1.getN(2);
+    cout<<player1.getN(3);
+    cout<<player1.getN(4);
+    
     
     for(int i=0; i<2; i++){
         player1.display();
@@ -74,8 +81,6 @@ void inputS(board &player, int i){
     int y2=0;
     char Cypos;
     
-
-    
     //enter
     do{
         cout<<"enter the initial x position 1-10"<<endl;
@@ -102,9 +107,11 @@ void inputS(board &player, int i){
     //convert
     y2=CtoInt(toupper(Cypos));
     
+    
     //create ship with initial x and pos positions
-    player.makeShp(i, x, y, x2, y2, "BATTLESHIP");
+    player.makeShp(i, x, y, x2, y2);
     player.shipOn(i);
     player.disCoor(i);
     player.fillrest(i);
+
 }
