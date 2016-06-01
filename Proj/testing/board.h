@@ -18,6 +18,7 @@ const int NUMSHIP=5;
 class board : public warShip{
     private:
         static int count;
+        static string names[NUMSHIP];
         char array[SIZE][SIZE];
         warShip *ships;
     public:

@@ -5,10 +5,15 @@
  */
 #include "board.h"
 #include <iostream>
+#include <string>
 using namespace std;
 
 //initialize static variable to 0
 int board::count=0;
+
+//******************************************************************************
+//******************************************************************************
+string board::names[NUMSHIP]={"Battleship", " ", " ", " ", " "};
 
 //******************************************************************************
 //Defaulted Constructor For creating a board

@@ -21,6 +21,8 @@ using namespace std;
  */
 
 //functions
+void entrVal(board&);
+
 
 
 int main(int argc, char** argv) {
@@ -30,10 +32,9 @@ int main(int argc, char** argv) {
     board copy1;
     board copy2;
     
-    count=player1;
     
-    cout<<count<<endl;
-    
+    entrVal(player1);
+
     
     
     
@@ -45,11 +46,11 @@ int main(int argc, char** argv) {
     player1.display();
     cout<<player1.getN(0)<<endl;
     
-    cout<<"Testing copy"<<endl;
-    copy1=player1;
-    copy1.display();
-
-    
-    
     return 0;
+}
+
+void entrVal(board &player){
+    cout<<"This is your Grid: "<<endl;
+    player.display();
+    
 }
