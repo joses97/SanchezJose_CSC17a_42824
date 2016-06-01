@@ -34,6 +34,7 @@ class warShip{
         int getypos() const {return ypos;}
         int getfxpos() const {return fxpos;}
         int getfypos() const {return fypos;}
+        int getSize() const {return size;}
         string getName() const {return sName;}
 };
 #endif /* SHIPPS_H */

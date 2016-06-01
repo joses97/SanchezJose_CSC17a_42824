@@ -34,6 +34,7 @@ class board : public warShip{
         void shipOn(int);   //set initial points of ships
         void display();     //diplay the 2d array
         void fillrest(int); //fills in the values
+        int getSzs(int);    //get the size of the current ship
         int getNumS(){return totShip;} //returns the number of ships created
         operator int(){ return count; } //returns the count
         board operator +(const board &);    //

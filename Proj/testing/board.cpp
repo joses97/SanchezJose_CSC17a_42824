@@ -65,6 +65,11 @@ string board::getN(int i){ //returns the name of the ship requested
 }
 //******************************************************************************
 //******************************************************************************
+int board::getSzs(int i){ //returns the name of the ship requested
+    return ships[i].getSize();
+}
+//******************************************************************************
+//******************************************************************************
 void board::disCoor(int i){
     //Displays the coordinates of the ship at i 
     //output ships[i].getxpos(), ships[i].getypos()

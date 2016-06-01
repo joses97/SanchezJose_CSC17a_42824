@@ -22,6 +22,7 @@ using namespace std;
 
 //functions
 void inputS(board&, int);
+bool checkS(board, int, int, int, int, int);
 
 int main(int argc, char** argv) {
     int count;
@@ -32,6 +33,8 @@ int main(int argc, char** argv) {
     
     
     player1.setSNms();
+    player1.setSize();
+    
     
     for(int i=0; i<5; i++){
         player1.display();
@@ -45,11 +48,11 @@ int main(int argc, char** argv) {
     cout<<"Testing copy"<<endl;
     copy1=player1;
     copy1.display();
-
-    
     
     return 0;
 }
+//******************************************************************************
+//******************************************************************************
 //character to int
 int CtoInt(char y){
     switch (y){
@@ -66,40 +69,87 @@ int CtoInt(char y){
         default: return 11;
     }
 }
-
-//create ships;
+//******************************************************************************
+//******************************************************************************
+bool checkS(board player, int i, int x, int y, int x2, int y2){
+    bool check1=false;
+    bool check2=false;
+    bool check3=false;
+    int size=player.getSzs(i);
+    
+    if(x2-x==0){
+        check1=true;
+    }
+    if(y2-y==0){
+        check2=true;
+    }
+    if(x2-x==size){
+        check3=true;
+    }
+    if(y2-y==size){
+        check3=true;
+    }
+    if((check1||check2)==true){
+        if(check3==true){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+    else{
+        return false;
+    }
+}
+//
 void inputS(board &player, int i){
     int x=0;
     int y=0; 
     int x2=0; 
     int y2=0;
     char Cypos;
+    bool test=false;
     
     //enter
     do{
         cout<<"enter the initial x position 1-10"<<endl;
-        cin>>x;
-    }while(x>10||x<1);
+        do{
+            cin>>x;
+            try{
+                if(x>10||x<1)
+                {
+                    string error1="Please enter a value between 1 and 10";
+                    throw error1;
+                }
+            }
+            catch (string error1)
+            {
+                cout<<error1<<endl;
+            }
+        }while(x>10||x<1);
+            //enter
+        do{    
+            cout<<"enter the initial y position A-J"<<endl;
+            cin>>Cypos;
+        }while(CtoInt(toupper(Cypos))==11);
+        //convert
+        y=CtoInt(toupper(Cypos));
+
         //enter
-    do{    
-        cout<<"enter the initial y position A-J"<<endl;
-        cin>>Cypos;
-    }while(CtoInt(toupper(Cypos))==11);
-    //convert
-    y=CtoInt(toupper(Cypos));
-    
-    //enter
-    do{
-        cout<<"enter the final x position 1-10"<<endl;
-        cin>>x2;
-    }while(x2>10||x2<1);
-    //enter
-    do{    
-        cout<<"enter the final y position A-J"<<endl;
-        cin>>Cypos;
-    }while(CtoInt(toupper(Cypos))==11);
-    //convert
-    y2=CtoInt(toupper(Cypos));
+        do{
+            cout<<"enter the final x position 1-10"<<endl;
+            cin>>x2;
+        }while(x2>10||x2<1);
+        //enter
+        do{    
+            cout<<"enter the final y position A-J"<<endl;
+            cin>>Cypos;
+        }while(CtoInt(toupper(Cypos))==11);
+        //convert
+        y2=CtoInt(toupper(Cypos));
+        test=checkS(player, i, x, y, x2, y2);
+        cout<<test<<endl;
+    }while(test==false);
     
     
     //create ship with initial x and pos positions
