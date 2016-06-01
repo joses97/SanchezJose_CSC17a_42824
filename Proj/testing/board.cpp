@@ -91,13 +91,13 @@ void board::display(){
 void board::fillrest(int n){
     //fills in from the initial ship position to the final position for x
     for(int i=ships[n].getxpos(); i<ships[n].getfxpos(); i++){
-        array[ships[n].getxpos()-1][i]='X'; //array[ships[n].getypos()-1][i]='X'
+        array[ships[n].getypos()-1][i]='X'; //array[ships[n].getypos()-1][i]='X'
     }
     
 
     ////fills in from the initial ship position to the final position for y
     for(int i=ships[n].getypos(); i<ships[n].getfypos(); i++){
-        array[i][ships[n].getypos()-1]='X'; //array[i][ships[n].getxpos()-1]='X'
+        array[i][ships[n].getxpos()-1]='X'; //array[i][ships[n].getxpos()-1]='X'
     }       
 }
 //******************************************************************************
