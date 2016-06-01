@@ -10,20 +10,26 @@ using namespace std;
 
 //initialize static variable to 0
 int board::count=0;
-
 //******************************************************************************
 //******************************************************************************
+//Set static variable of array of 5 to the values of names of ships
+int board::sizes[NUMSHIP]={5, 4, 3, 3, 2};
+//******************************************************************************
+//******************************************************************************
+//Set static variable of array of 5 to the values of names of ships
 string board::names[NUMSHIP]={"Carrier", "Battleship", "Cruiser", "Submarine",
     "Destroyer"};
-
+//******************************************************************************
 //******************************************************************************
 //Defaulted Constructor For creating a board
 board::board(){
     //create 5 ships per board, dynamically create 5 ships of class warShip
     ships = new warShip[NUMSHIP];
     //for loop to create the 10x10 board
-    for(int i=0; i<SIZE; i++){ //loop 10 times for row
-        for(int j=0; j<SIZE; j++){//loop 10 times for column
+    for(int i=0; i<SIZE; i++) //loop 10 times for row
+    { 
+        for(int j=0; j<SIZE; j++) //loop 10 times for column
+        {
             array[i][j]='-'; //set the private member to - for the grid
         }
     }
@@ -38,14 +44,23 @@ board::~board(){
 }
 //******************************************************************************
 //******************************************************************************
+void board::setSize(){
+    //loop 5 time to set the size of the ships
+    for(int i=0; i<NUMSHIP; i++){
+        ships[i].setSize(sizes[i]);
+    }
+}
+//******************************************************************************
+//******************************************************************************
 void board::setSNms(){
+    //loop 5 times to assign a name to the object
     for(int i=0; i<NUMSHIP; i++){
         ships[i].setsNam(names[i]);
     }
 }
 //******************************************************************************
 //******************************************************************************
-string board::getN(int i){
+string board::getN(int i){ //returns the name of the ship requested
     return ships[i].getName();
 }
 //******************************************************************************
@@ -85,9 +100,10 @@ void board::shipOn(int i){
 //******************************************************************************
 //******************************************************************************
 void board::display(){
+    char p='A';
     cout<<"    1   2   3   4   5   6   7   8   9   10"<<endl;
     for(int i=0; i<SIZE; i++){
-        cout<<i+1;
+        cout<<static_cast<char>(p+i);
         for(int j=0; j<SIZE; j++){
             cout<<" | "<<array[i][j];
         }  

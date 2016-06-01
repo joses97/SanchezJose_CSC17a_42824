@@ -19,6 +19,7 @@ using namespace std;
 class warShip{
     protected:
         string sName;
+        int size;
         int xpos;
         int ypos;
         int fxpos;
@@ -28,6 +29,7 @@ class warShip{
         warShip();
         void bShipC(int , int , int , int);
         void setsNam(string n){sName=n;}
+        void setSize(int n){size=n;}
         int getxpos() const {return xpos;}
         int getypos() const {return ypos;}
         int getfxpos() const {return fxpos;}

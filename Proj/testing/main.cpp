@@ -32,14 +32,8 @@ int main(int argc, char** argv) {
     
     
     player1.setSNms();
-    cout<<player1.getN(0);
-    cout<<player1.getN(1);
-    cout<<player1.getN(2);
-    cout<<player1.getN(3);
-    cout<<player1.getN(4);
     
-    
-    for(int i=0; i<2; i++){
+    for(int i=0; i<5; i++){
         player1.display();
         inputS(player1, i);
         player1.display();
