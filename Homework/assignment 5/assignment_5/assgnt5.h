@@ -116,6 +116,18 @@ class milTime: public Time{
         milTime(int h, int s){milHours=h, milSec=s;}
         void setTime();
 };
+class milTime2: public Time{
+    protected:
+        int milHours;
+        int milSec;
+    public:
+        class invldNm{};
+        milTime2(){;}
+        milTime2(int h, int s);
+        void setTime();
+};
+
+
 //******************************************************************************
 //******************************************************************************
 //******************************************************************************

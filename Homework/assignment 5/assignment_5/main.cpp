@@ -62,13 +62,8 @@ void Menu(){
     cout<<"Type 3 for problem 3"<<endl;
     cout<<"Type 4 for problem 4"<<endl;
     cout<<"Type 5 for problem 5"<<endl;
-    cout<<"Type 6 for problem 1"<<endl;
     cout<<endl<<"Chapter 16 problems"<<endl;
-    cout<<"Type 7 for problem 1"<<endl;
-    cout<<"Type 8 for problem 2"<<endl;
-    cout<<"Type 9 for problem 3"<<endl;
-    cout<<"Type 10 for problem 4"<<endl;
-    cout<<"Type 11 for problem 5"<<endl;
+    cout<<"Type 6 for problem 1"<<endl;
 
     
     cout<<"Type anything else to exit \n"<<endl;
@@ -146,7 +141,23 @@ void problem5(){
 //******************************************************************************
 //******************************************************************************
 void problem6(){
-      
+    cout<<"Entering Problem 2 chapter 16"<<endl;
+    int hours=0;
+    int seconds=0;
+    cout<<"Enter hours in military formate: 12300"<<endl;
+    cin>>hours;
+    cout<<"Enter time"<<endl;
+    cin>>seconds;
+    milTime2 times2(hours, seconds);
+    try{
+        times2.setTime();
+    }
+    catch(milTime2::invldNm){
+        cout<<"Error: Entered invalid values entered"<<endl;
+    }
+    cout<<"1230 hours and 23 seconds is: "<<times2.getHour()<<" Hours "
+            ""<<" and "<<times2.getMin()<<" minutes and "<<times2.getSec()<<""
+            "seconds"<<endl;
 }
 //******************************************************************************
 //******************************************************************************
@@ -155,17 +166,17 @@ void def(int inN){
         cout<<"You typed "<<inN<<" to exit the program"<<endl;
 }
 void problem7(){
-    
+    cout<<"nothing here"<<endl;
 }
 void problem8(){
-   
+   cout<<"nothing here"<<endl;
 }
 void problem9(){
-    
+    cout<<"nothing here"<<endl;
 }
 void problem10(){
-    
+    cout<<"nothing here"<<endl;
 }
 void problem11(){
-  
+    cout<<"nothing here"<<endl;
 }

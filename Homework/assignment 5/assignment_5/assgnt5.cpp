@@ -49,3 +49,25 @@ void milTime::setTime(){
 void TimeClock::findDif(){
     netTime=time1-time2;
 }
+//******************************************************************************
+//Chapter 15 Problem 4 class functions
+void milTime2::setTime(){
+    int num=milHours;
+    int num2=num;
+    
+    if(milHours>2359||milHours<0||milSec<0||milSec>59){
+        throw invldNm();
+    }
+    
+    num=num%100;
+    num2=(milHours-num)/100;
+    
+    hour=num2;
+    min=num;
+    sec=milSec;
+}
+
+milTime2::milTime2(int h, int s){
+    milHours=h;
+    milSec=s;
+}
