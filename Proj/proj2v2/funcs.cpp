@@ -9,6 +9,9 @@
 #include <cstdlib>
 #include <iostream>
 #include <cmath>
+#include <cstring>
+#include <string>
+#include <cstdlib>
 #include <fstream>
 
 //user libraries
@@ -79,15 +82,26 @@ void inputS(board &player, int i){
         reDo=false;
         cout<<"Enter "<<player.getN(i)<<" which is of size"
                 " "<<player.getSzs(i)<<endl;
-        cout<<"enter the initial x position 1-10"<<endl;
+        //enter
+        //enter the initial y position
         do
-        {
+        {   
+                cout<<"enter the initial y position A-J"<<endl;
+                cin>>Cypos;
+        } while(CtoInt(toupper(Cypos))==11);
+        
+        //convert
+        y=CtoInt(toupper(Cypos));
+        //enter in the initial x position
+        do
+        {   
+            cout<<"enter the initial x position 1-10"<<endl;
             cin>>x;
             try
             {
                 if(x>10||x<1)
                 {
-                    string error1="Please enter a value between 1 and 10";
+                    string error1="ERROR:Please enter a value between 1 and 10";
                     throw error1;
                 }
             }
@@ -97,28 +111,32 @@ void inputS(board &player, int i){
             }
         }
         while(x>10||x<1);
-        //enter
-        do
-        {    
-            cout<<"enter the initial y position A-J"<<endl;
-            cin>>Cypos;
-        } while(CtoInt(toupper(Cypos))==11);
         
-        //convert
-        y=CtoInt(toupper(Cypos));
-
-        //enter
-        do{
-            cout<<"enter the final x position 1-10"<<endl;
-            cin>>x2;
-        }while(x2>10||x2<1);
-        
-        //enter
+        //enter final y position 
         do
         {    
             cout<<"enter the final y position A-J"<<endl;
             cin>>Cypos;
         } while(CtoInt(toupper(Cypos))==11);
+        
+        //enter final x position
+        do{
+            cout<<"enter the final x position 1-10"<<endl;
+            cin>>x2;
+            try
+            {
+                if(x2>10||x2<1)
+                {
+                    string error1="ERROR:Please enter a value between 1 and 10";
+                    throw error1;
+                }
+            }
+            catch (string error1)
+            {
+                cout<<error1<<endl;
+            }
+        }while(x2>10||x2<1);
+        
         //convert
         y2=CtoInt(toupper(Cypos));
         try
@@ -141,5 +159,4 @@ void inputS(board &player, int i){
     player.shipOn(i);
     player.disCoor(i);
     player.fillrest(i);
-
 }
