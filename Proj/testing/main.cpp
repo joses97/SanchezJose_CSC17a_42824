@@ -13,6 +13,7 @@
 
 #include <cstdlib>
 #include <iostream>
+#include <cmath>
 #include "board.h"
 using namespace std;
 
@@ -22,7 +23,7 @@ using namespace std;
 
 //functions
 void inputS(board&, int);
-bool checkS(board, int, int, int, int, int);
+char checkC(board, int, int, int, int, int);
 
 int main(int argc, char** argv) {
     int count;
@@ -36,7 +37,7 @@ int main(int argc, char** argv) {
     player1.setSize();
     
     
-    for(int i=0; i<5; i++){
+    for(int i=0; i<1; i++){
         player1.display();
         inputS(player1, i);
         player1.display();
@@ -71,35 +72,56 @@ int CtoInt(char y){
 }
 //******************************************************************************
 //******************************************************************************
-bool checkS(board player, int i, int x, int y, int x2, int y2){
-    bool check1=false;
-    bool check2=false;
-    bool check3=false;
-    int size=player.getSzs(i);
-    
-    if(x2-x==0){
+char checkC(board player, int i, int x, int y, int x2, int y2){
+    //NOTE TO DR LEHR. RETURNING BOOL KEPT RESULTING IN RUN FAILED, USED INT NOW
+    bool check1=false; //check for y value difference is 0
+    bool check2=false; //check for x value difference is 0
+    int size = player.getSzs(i);
+    //swap x and x2 for greatest value
+    if(x>x2){
+        int temp=x;
+        x=x2;
+        x2=temp;
+    }
+    //swap y and y2 for the greatest value
+    if(y>y2){
+        int temp=y;
+        y=y2;
+        y2=temp;
+    }
+    //find if y is constant in the user entered values
+    if(y2-y==0){
         check1=true;
     }
-    if(y2-y==0){
+    //find if the x is constant in the user entered values
+    if(x2-x==0){
         check2=true;
-    }
-    if(x2-x==size){
-        check3=true;
-    }
-    if(y2-y==size){
-        check3=true;
-    }
-    if((check1||check2)==true){
-        if(check3==true){
-            return true;
+    } 
+    //if the y values are constant
+    if(check1==true){
+        //check to see if x values are the correct distance from each other
+        if(x2-x==size){
+            return 'n'; //return n for a good user entry, no need to rereun
         }
         else{
-            return false;
+            return 'y'; //return y for a bad user entry, yes need to rerun
         }
+        
+    }
+    else if(check2==true){
+        //check to see if y values are the correct distance from each other
+        if(y2-y==size){
+            return 'n'; //return n for a good user entry
+        }
+        else{
+            return 'y'; //return y for a bad user entry
+        }        
     }
     else{
-        return false;
+        return 'y'; //return y for a bad user entry
     }
+    
+    
 }
 //
 void inputS(board &player, int i){
@@ -108,10 +130,11 @@ void inputS(board &player, int i){
     int x2=0; 
     int y2=0;
     char Cypos;
-    bool test=false;
     
     //enter
     do{
+        cout<<"Enter "<<player.getN(i)<<" which is of size"
+                " "<<player.getSzs(i)<<endl;
         cout<<"enter the initial x position 1-10"<<endl;
         do{
             cin>>x;
@@ -147,9 +170,7 @@ void inputS(board &player, int i){
         }while(CtoInt(toupper(Cypos))==11);
         //convert
         y2=CtoInt(toupper(Cypos));
-        test=checkS(player, i, x, y, x2, y2);
-        cout<<test<<endl;
-    }while(test==false);
+    }while(checkC(player, i, x, y, x2, y2)=='y');
     
     
     //create ship with initial x and pos positions
