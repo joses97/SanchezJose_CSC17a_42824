@@ -1,23 +1,21 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/* 
+ * File:   main.cpp
+ * Author: Jose Sanchez
+ * Purpose: Battleship
+ * Created on June 4th 2016
  */
 
-/* 
- * File:   plyrInfo.h
- * Author: Jose
- *
- * Created on June 3, 2016, 10:28 PM
- */
+//System libraries
 #include <string>
 using namespace std;
 
+//User libraries
 
-
+//define 
 #ifndef PLYRINFO_H
 #define PLYRINFO_H
-//info of the users
+
+//create structure to keep track of user info
 struct info
 {
     string names;

@@ -1,14 +1,21 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/* 
+ * File:   board.cpp
+ * Author: Jose Sanchez
+ * Purpose: hold main functions
+ * Created on June 4th 2016
  */
-#include "board.h"
+
+//System Libraries 
 #include <iostream>
 #include <cmath>
 #include <string>
+
+//User Libraries
+#include "board.h"
 using namespace std;
 
+//Board.cpp functions held here
+//******************************************************************************
 //initialize static variable to 0
 int board::count=0;
 //******************************************************************************
@@ -53,38 +60,47 @@ bool board::testCor(int i, int xOne, int yOne, int xTwo, int yTwo){
     int size=ships[i].getSize();
     
     //test to see if x is a constant
-    if(abs(xOne-xTwo)==0){
+    if(abs(xOne-xTwo)==0)
+    {
         test1=true; //if true set test1 to true, shows x is constant
     }
     
     //test to see if y is a constant
-    if(abs(yOne-yTwo)==0){
+    if(abs(yOne-yTwo)==0)
+    {
         test2=true; //if true set test2 to true, shows y is a constant
     }
     
     //try to see if any errors occured
         //test for x and y constance
-        if(test1&&test2){
+        if(test1&&test2)
+        {
             throw invalid();//if both x and y are constant return false, bad input
             return false;   //return false for bad input
         }
 
         // if test 1 was the constant test for the difference in y coordinates
-        else if(test1){
-            if(abs(yOne-yTwo-1)==size){ //if difference is equal to size
+        else if(test1)
+        {
+            if(abs(yOne-yTwo-1)==size)
+            { //if difference is equal to size
                 return true;    //return true for good input
             }
-            else{   //else
+            else
+            {   //else
                 throw invalid(); //throw invalid for bad input
                 return false;   //return false for a bad input
             }   
         }
         //if test 2 was the constant test for the difference in x coordinates
-        else if(test2){
-            if(abs(xOne-xTwo-1)==size){ //if difference in x was = to size
+        else if(test2)
+        {
+            if(abs(xOne-xTwo-1)==size) //if difference in x was = to size
+            { 
                 return true;    //return true for good input
             }   
-            else{
+            else
+            {
                 throw invalid(); //throw invalid for bad input
                 return false; //return false for a bad input
             }
@@ -98,7 +114,8 @@ bool board::testCor(int i, int xOne, int yOne, int xTwo, int yTwo){
 //******************************************************************************
 void board::setSize(){
     //loop 5 time to set the size of the ships
-    for(int i=0; i<NUMSHIP; i++){
+    for(int i=0; i<NUMSHIP; i++)
+    {
         ships[i].setSize(sizes[i]);
     }
 }
@@ -106,7 +123,8 @@ void board::setSize(){
 //******************************************************************************
 void board::setSNms(){
     //loop 5 times to assign a name to the object
-    for(int i=0; i<NUMSHIP; i++){
+    for(int i=0; i<NUMSHIP; i++)
+    {
         ships[i].setsNam(names[i]);
     }
 }
@@ -132,8 +150,10 @@ void board::disCoor(int i){
 //******************************************************************************
 void board::operator =(const board& right){
     //= operator copies to board of one board object to another
-        for(int i=0; i<SIZE; i++){ //loop 10 times for the row fill in
-            for(int j=0; j<SIZE; j++){ //loop 10 times for the column fill in
+        for(int i=0; i<SIZE; i++)
+        { //loop 10 times for the row fill in
+            for(int j=0; j<SIZE; j++)
+            { //loop 10 times for the column fill in
                 array[i][j]=right.array[i][j]; //array[i][j]=right.array[i][j];
             }
         }
@@ -141,8 +161,7 @@ void board::operator =(const board& right){
 //******************************************************************************
 //******************************************************************************
 void board::makeShp(int i, int a, int b, int c, int d){
-    //fill in values for the array of ships, 
-    // a and b are the initial x and y position
+    //fill in values for the  initial x and y position
     //c and d are the final x and y position
     ships[i].bShipC(a, b, c, d);
 }
@@ -159,9 +178,11 @@ void board::shipOn(int i){
 void board::display(){
     char p='A';
     cout<<"    1   2   3   4   5   6   7   8   9   10"<<endl;
-    for(int i=0; i<SIZE; i++){
-        cout<<static_cast<char>(p+i);
-        for(int j=0; j<SIZE; j++){
+    for(int i=0; i<SIZE; i++)
+    {
+        cout<<static_cast<char>(p+i); 
+        for(int j=0; j<SIZE; j++)
+        {
             cout<<" | "<<array[i][j];
         }  
         cout<<endl;
@@ -171,13 +192,15 @@ void board::display(){
 //******************************************************************************
 void board::fillrest(int n){
     //fills in from the initial ship position to the final position for x
-    for(int i=ships[n].getxpos(); i<ships[n].getfxpos(); i++){
+    for(int i=ships[n].getxpos(); i<ships[n].getfxpos(); i++)
+    {
         array[ships[n].getypos()-1][i]='X'; //array[ships[n].getypos()-1][i]='X'
     }
     
 
     ////fills in from the initial ship position to the final position for y
-    for(int i=ships[n].getypos(); i<ships[n].getfypos(); i++){
+    for(int i=ships[n].getypos(); i<ships[n].getfypos(); i++)
+    {
         array[i][ships[n].getxpos()-1]='X'; //array[i][ships[n].getxpos()-1]='X'
     }       
 }

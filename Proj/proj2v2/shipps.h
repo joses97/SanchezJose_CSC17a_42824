@@ -1,21 +1,21 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /* 
- * File:   shipps.h
- * Author: Jose
- *
- * Created on May 27, 2016, 1:28 AM
+ * File:   main.cpp
+ * Author: Jose Sanchez
+ * Purpose: Battleship
+ * Created on June 4th 2016
  */
 
+//define ship.h
 #ifndef SHIPPS_H
 #define SHIPPS_H
+
+//System Libraries 
 #include <iostream>
 using namespace std;
 
+//user libraries
+
+//create class warShip
 class warShip{
     protected:
         string sName;

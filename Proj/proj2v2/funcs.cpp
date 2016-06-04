@@ -1,16 +1,22 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/* 
+ * File:   main.cpp
+ * Author: Jose Sanchez
+ * Purpose: hold main functions
+ * Created on June 4th 2016
  */
+
+//System Libraries 
 #include <cstdlib>
 #include <iostream>
 #include <cmath>
 #include <fstream>
+
+//user libraries
 #include "board.h"
 #include "plyrInfo.h"
 using namespace std;
 
+//global constants
 
 //******************************************************************************
 //******************************************************************************
@@ -23,7 +29,8 @@ void rules(){
     rules.open("rules.txt", ios::in);
     
     //if failed to open  tell user failed to open
-    if (rules.fail()){
+    if (rules.fail())
+    {
         cout<<"rules.txt not found!"<<endl;
     }
     //else display contents of the .txt
@@ -33,7 +40,7 @@ void rules(){
             cout<<line<<endl;
         }
     }
-    cout<<endl<<endl<<endl;
+    cout<<endl;
     //close rules file
     rules.close();
 }
@@ -41,7 +48,8 @@ void rules(){
 //******************************************************************************
 //this functions changes a character to an integer
 int CtoInt(char y){
-    switch (y){
+    switch (y)
+    {
         case 'A':return 1;
         case 'B':return 2;
         case 'C':return 3;
@@ -72,9 +80,11 @@ void inputS(board &player, int i){
         cout<<"Enter "<<player.getN(i)<<" which is of size"
                 " "<<player.getSzs(i)<<endl;
         cout<<"enter the initial x position 1-10"<<endl;
-        do{
+        do
+        {
             cin>>x;
-            try{
+            try
+            {
                 if(x>10||x<1)
                 {
                     string error1="Please enter a value between 1 and 10";
@@ -85,12 +95,15 @@ void inputS(board &player, int i){
             {
                 cout<<error1<<endl;
             }
-        }while(x>10||x<1);
-            //enter
-        do{    
+        }
+        while(x>10||x<1);
+        //enter
+        do
+        {    
             cout<<"enter the initial y position A-J"<<endl;
             cin>>Cypos;
-        }while(CtoInt(toupper(Cypos))==11);
+        } while(CtoInt(toupper(Cypos))==11);
+        
         //convert
         y=CtoInt(toupper(Cypos));
 
@@ -99,17 +112,21 @@ void inputS(board &player, int i){
             cout<<"enter the final x position 1-10"<<endl;
             cin>>x2;
         }while(x2>10||x2<1);
+        
         //enter
-        do{    
+        do
+        {    
             cout<<"enter the final y position A-J"<<endl;
             cin>>Cypos;
-        }while(CtoInt(toupper(Cypos))==11);
+        } while(CtoInt(toupper(Cypos))==11);
         //convert
         y2=CtoInt(toupper(Cypos));
-        try{
+        try
+        {
             reDo=player.testCor(i, x, y, x2, y2);
         }
-        catch(board::invalid){
+        catch(board::invalid)
+        {
             cout<<endl;
             cout<<"Invalid Coordinates were entered"<<endl;
             cout<<"Re-Enter Values with the with correct size"<<endl;

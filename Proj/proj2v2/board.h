@@ -1,20 +1,27 @@
 /* 
- * File:   board.h
- * Author: Jose
- *
- * Created on May 27, 2016, 12:58 AM
+ * File:   main.cpp
+ * Author: Jose Sanchez
+ * Purpose: Battleship
+ * Created on June 4th 2016
  */
 
-#include "shipps.h"
+//System libraries
 #include <iostream>
+
+//User libraries
+#include "shipps.h"
 using namespace std;
 
-
+//define board.h
 #ifndef BOARD_H
 #define	BOARD_H
+
+//global constants
 const int SIZE=10; //size of the board
 const int NUMSHIP=5; //number of ships
 const int NUMPLAY=2; //number of players
+
+//create class board, inherit from warShip to gain access to protected members
 class board : public warShip{
     private:
         static int count; //count
