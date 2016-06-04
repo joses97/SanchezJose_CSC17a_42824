@@ -14,7 +14,7 @@ using namespace std;
 #define	BOARD_H
 const int SIZE=10; //size of the board
 const int NUMSHIP=5; //number of ships
-
+const int NUMPLAY=2; //number of players
 class board : public warShip{
     private:
         static int count; //count
@@ -23,6 +23,7 @@ class board : public warShip{
         char array[SIZE][SIZE]; //holds the board information
         warShip *ships; //pointer to ships on the board
     public:
+        class invalid{};
         board(); //constructor
         ~board(); //destructor 
         string getN(int); //gets the name of the current ship 
@@ -36,6 +37,7 @@ class board : public warShip{
         void fillrest(int); //fills in the values
         int getSzs(int);    //get the size of the current ship
         int getNumS(){return totShip;} //returns the number of ships created
+        bool testCor(int, int, int, int, int);//tests the coordinates of the 
         operator int(){ return count; } //returns the count
         board operator +(const board &);    //
         board operator -(const board &);    //

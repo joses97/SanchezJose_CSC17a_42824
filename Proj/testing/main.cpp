@@ -15,6 +15,8 @@
 #include <iostream>
 #include <cmath>
 #include "board.h"
+#include "plyrInfo.h"
+#include <fstream>
 using namespace std;
 
 /*
@@ -27,30 +29,66 @@ char checkC(board, int, int, int, int, int);
 
 int main(int argc, char** argv) {
     int count;
+    info *players = new info[NUMPLAY];
+    
     board player1;
     board player2;
     board copy1;
     board copy2;
     
-    
+    //set the names of the ships to the ships created
     player1.setSNms();
-    player1.setSize();
+    player1.setSize(); //set the size of the ships to the ships created
     
+    //set the names of the ships to the ships created
+    player2.setSNms();
+    player2.setSize(); //set the size of the ships to the ships created
     
-    for(int i=0; i<1; i++){
+    //enter the info of the players
+    for(int i=0; i<NUMPLAY; i++){
+        cout<<"Enter name of player "<<i+1<<" ";
+        getline(cin, players[i].names);
+    }
+    
+    for(int i=0; i<NUMSHIP; i++){
         player1.display();
         inputS(player1, i);
         player1.display();
     }
+    for(int i=0; i<NUMSHIP; i++){
+        player2.display();
+        inputS(player2, i);
+        player2.display();
+    }
     
-    
-    
-    
-    cout<<"Testing copy"<<endl;
-    copy1=player1;
-    copy1.display();
+    delete [] players;
     
     return 0;
+}
+//******************************************************************************
+//******************************************************************************
+//get the rules of the game, reused code from last project
+void rules(){
+    fstream rules; //rules fstream
+    string line;  //to read into 
+    
+    //open the file rules.txt for input
+    rules.open("rules.txt", ios::in);
+    
+    //if failed to open  tell user failed to open
+    if (rules.fail()){
+        cout<<"rules.txt not found!"<<endl;
+    }
+    //else display contents of the .txt
+    else{
+        while(! rules.eof()){       //while !rules.eof())
+            getline(rules, line); //call get line
+            cout<<line<<endl;
+        }
+    }
+    cout<<endl<<endl<<endl;
+    //close rules file
+    rules.close();
 }
 //******************************************************************************
 //******************************************************************************
@@ -72,67 +110,17 @@ int CtoInt(char y){
 }
 //******************************************************************************
 //******************************************************************************
-char checkC(board player, int i, int x, int y, int x2, int y2){
-    //NOTE TO DR LEHR. RETURNING BOOL KEPT RESULTING IN RUN FAILED, USED INT NOW
-    bool check1=false; //check for y value difference is 0
-    bool check2=false; //check for x value difference is 0
-    int size = player.getSzs(i);
-    //swap x and x2 for greatest value
-    if(x>x2){
-        int temp=x;
-        x=x2;
-        x2=temp;
-    }
-    //swap y and y2 for the greatest value
-    if(y>y2){
-        int temp=y;
-        y=y2;
-        y2=temp;
-    }
-    //find if y is constant in the user entered values
-    if(y2-y==0){
-        check1=true;
-    }
-    //find if the x is constant in the user entered values
-    if(x2-x==0){
-        check2=true;
-    } 
-    //if the y values are constant
-    if(check1==true){
-        //check to see if x values are the correct distance from each other
-        if(x2-x==size){
-            return 'n'; //return n for a good user entry, no need to rereun
-        }
-        else{
-            return 'y'; //return y for a bad user entry, yes need to rerun
-        }
-        
-    }
-    else if(check2==true){
-        //check to see if y values are the correct distance from each other
-        if(y2-y==size){
-            return 'n'; //return n for a good user entry
-        }
-        else{
-            return 'y'; //return y for a bad user entry
-        }        
-    }
-    else{
-        return 'y'; //return y for a bad user entry
-    }
-    
-    
-}
-//
 void inputS(board &player, int i){
     int x=0;
     int y=0; 
     int x2=0; 
     int y2=0;
     char Cypos;
+    bool reDo=false;
     
     //enter
     do{
+        reDo=false;
         cout<<"Enter "<<player.getN(i)<<" which is of size"
                 " "<<player.getSzs(i)<<endl;
         cout<<"enter the initial x position 1-10"<<endl;
@@ -170,7 +158,17 @@ void inputS(board &player, int i){
         }while(CtoInt(toupper(Cypos))==11);
         //convert
         y2=CtoInt(toupper(Cypos));
-    }while(checkC(player, i, x, y, x2, y2)=='y');
+        try{
+            reDo=player.testCor(i, x, y, x2, y2);
+        }
+        catch(board::invalid){
+            cout<<endl;
+            cout<<"Invalid Coordinates were entered"<<endl;
+            cout<<"Re-Enter Values with the with correct size"<<endl;
+            cout<<endl;
+            player.display();
+        }
+    }while(!reDo);
     
     
     //create ship with initial x and pos positions

@@ -5,6 +5,7 @@
  */
 #include "board.h"
 #include <iostream>
+#include <cmath>
 #include <string>
 using namespace std;
 
@@ -42,6 +43,57 @@ board::~board(){
     //delete the dynamically created array of ships
     delete [] ships;
 }
+//******************************************************************************
+//******************************************************************************
+//Test to see if user entered values are valid entries
+bool board::testCor(int i, int xOne, int yOne, int xTwo, int yTwo){
+    bool test1=false;   //to test if x is a constant
+    bool test2=false;   //to test if y is a constant
+    //set the size to the size of the ship, for testing users entered size
+    int size=ships[i].getSize();
+    
+    //test to see if x is a constant
+    if(abs(xOne-xTwo)==0){
+        test1=true; //if true set test1 to true, shows x is constant
+    }
+    
+    //test to see if y is a constant
+    if(abs(yOne-yTwo)==0){
+        test2=true; //if true set test2 to true, shows y is a constant
+    }
+    
+    //try to see if any errors occured
+        //test for x and y constance
+        if(test1&&test2){
+            throw invalid();//if both x and y are constant return false, bad input
+            return false;   //return false for bad input
+        }
+
+        // if test 1 was the constant test for the difference in y coordinates
+        else if(test1){
+            if(abs(yOne-yTwo-1)==size){ //if difference is equal to size
+                return true;    //return true for good input
+            }
+            else{   //else
+                throw invalid(); //throw invalid for bad input
+                return false;   //return false for a bad input
+            }   
+        }
+        //if test 2 was the constant test for the difference in x coordinates
+        else if(test2){
+            if(abs(xOne-xTwo-1)==size){ //if difference in x was = to size
+                return true;    //return true for good input
+            }   
+            else{
+                throw invalid(); //throw invalid for bad input
+                return false; //return false for a bad input
+            }
+        }
+    //if for some reason all tests failed, 
+    throw invalid();    //throw invalid
+    return false;       //return false
+}
+
 //******************************************************************************
 //******************************************************************************
 void board::setSize(){
