@@ -1,0 +1,10 @@
+Welcome to Battleship version 2.0! Now with Class!
+The rules of battleship are as followed
+Each player gets 5 untis to place on the board.
+The board is a 10x10 grid filled with '-' initially 
+The initial x position will be entered first in the int format.
+Values excepted to be entered are 1-10;
+The initial y position will be entered second as a character
+Values excepted to be entered are A-J, not no required.
+The user will be told to re-enter values until the values are accpeted.
+
