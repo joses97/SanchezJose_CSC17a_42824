@@ -36,6 +36,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 # Object Files
 OBJECTFILES= \
 	${OBJECTDIR}/board.o \
+	${OBJECTDIR}/funcs.o \
 	${OBJECTDIR}/main.o \
 	${OBJECTDIR}/shipps.o
 
@@ -68,6 +69,11 @@ ${OBJECTDIR}/board.o: board.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/board.o board.cpp
+
+${OBJECTDIR}/funcs.o: funcs.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/funcs.o funcs.cpp
 
 ${OBJECTDIR}/main.o: main.cpp 
 	${MKDIR} -p ${OBJECTDIR}
