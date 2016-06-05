@@ -52,6 +52,20 @@ board::~board(){
 }
 //******************************************************************************
 //******************************************************************************
+//gets access to the board positions
+char board::check(int x, int y, board& copy){
+    if(array[x-1][y-1]=='X'){
+        cout<<"Its a hit!"<<endl;
+        copy.array[x-1][y-1]='X';
+    }
+    else if(array[x-1][y-1]=='-'){
+        cout<<"Its a miss!"<<endl;
+        copy.array[x-1][y-1]='O';
+    }
+}
+
+//******************************************************************************
+//******************************************************************************
 //Test to see if user entered values are valid entries
 bool board::testCor(int i, int xOne, int yOne, int xTwo, int yTwo){
     bool test1=false;   //to test if x is a constant

@@ -66,6 +66,8 @@ int main(int argc, char** argv) {
         player2.display();
     }
     
+    playG(player1, player2, copy1, copy2, players);
+    
     //delete dynamically created array
     delete [] players;
     

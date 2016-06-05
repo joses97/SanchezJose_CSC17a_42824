@@ -171,7 +171,7 @@ void playG(board& player1, board& player2, board& p1copy, board& p2copy, info pI
     int y1=0;
     char yVal;
 
-    cout<<"Enter guess "<<pInfo[i].names<<endl;
+    cout<<"Enter guess "<<pInfo[0].names<<endl;
     cout<<"Enter guess for the X Position (1-10)"<<endl;
     do
     { //try to see if user entered value is valid 
@@ -202,6 +202,6 @@ void playG(board& player1, board& player2, board& p1copy, board& p2copy, info pI
     cout<<"Entry received: "<<y1<<endl<<endl;
     
     //check for the win 
-    player1.check(xVal, y1);
+    player1.check(xVal, y1, p2copy);
 
 }
