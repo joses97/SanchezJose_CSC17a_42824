@@ -42,6 +42,7 @@ class board : public warShip{
         void shipOn(int);   //set initial points of ships
         void display();     //diplay the 2d array
         void fillrest(int); //fills in the values
+        char check(int, int, board&); //checks to see if coordinates contain ship
         int getSzs(int);    //get the size of the current ship
         int getNumS(){return totShip;} //returns the number of ships created
         bool testCor(int, int, int, int, int);//tests the coordinates of the 

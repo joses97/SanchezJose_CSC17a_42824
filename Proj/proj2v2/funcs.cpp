@@ -63,7 +63,10 @@ int CtoInt(char y){
         case 'H':return 8;
         case 'I':return 9;
         case 'J':return 10;
-        default: return 11;
+        default: {
+            cout<<"ERROR: Enter character A-J"<<endl;
+            return 11;
+        }
     }
 }
 //******************************************************************************
@@ -159,4 +162,46 @@ void inputS(board &player, int i){
     player.shipOn(i);
     player.disCoor(i);
     player.fillrest(i);
+}
+//******************************************************************************
+//******************************************************************************
+//enter in values for the guesses
+void playG(board& player1, board& player2, board& p1copy, board& p2copy, info pInfo[]){
+    int xVal=0;
+    int y1=0;
+    char yVal;
+
+    cout<<"Enter guess "<<pInfo[i].names<<endl;
+    cout<<"Enter guess for the X Position (1-10)"<<endl;
+    do
+    { //try to see if user entered value is valid 
+        cin>>xVal;
+        try
+        {   //if x>10||x<1
+            if(xVal>10||xVal<1)
+            {   // throw string if true
+                string error1="ERROR:Please enter a value between 1 and 10";
+                throw error1;
+            }
+        } //catch string thrown 
+        catch (string error1)
+        {   //output string thrown 
+            cout<<error1<<endl;
+        } 
+    }while(xVal<1||xVal>10); //do while user entered value is x>10 || x<1
+    cout<<"Entry received: "<<xVal<<endl<<endl;
+    //enter value for the y
+    cout<<"Enter guess for the Y Position (A-J)"<<endl;
+    do
+    {   
+            cout<<"enter the initial y position A-J"<<endl;
+            cin>>yVal;
+    } while(CtoInt(toupper(yVal))==11);
+    //set y value 
+    y1=CtoInt(toupper(yVal));
+    cout<<"Entry received: "<<y1<<endl<<endl;
+    
+    //check for the win 
+    player1.check(xVal, y1);
+
 }

@@ -22,7 +22,7 @@ using namespace std;
 void inputS(board&, int);
 char checkC(board, int, int, int, int, int);
 void rules();
-void playG(board&, board&, board&, board&);
+void playG(board&, board&, board&, board&, info[]);
 
 //Execution begins here
 int main(int argc, char** argv) {
@@ -45,6 +45,9 @@ int main(int argc, char** argv) {
     //set the names of the ships to the ships created
     player2.setSNms();
     player2.setSize(); //set the size of the ships to the ships created
+    
+    copy1=player1;
+    copy2=player2;
     
     //enter the info of the players
     for(int i=0; i<NUMPLAY; i++){
