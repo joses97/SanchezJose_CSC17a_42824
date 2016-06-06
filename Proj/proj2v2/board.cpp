@@ -17,7 +17,10 @@ using namespace std;
 //Board.cpp functions held here
 //******************************************************************************
 //initialize static variable to 0
-int board::count=0;
+int board::hits=0;
+//******************************************************************************
+//initialize static variable to 0
+int board::misses=0;
 //******************************************************************************
 //******************************************************************************
 //Set static variable of array of 5 to the values of names of ships
@@ -41,8 +44,6 @@ board::board(){
             array[i][j]='-'; //set the private member to - for the grid
         }
     }
-    //every time a board is created add one to static variable count
-    count++;
 }
 //******************************************************************************
 //******************************************************************************
@@ -54,16 +55,24 @@ board::~board(){
 //******************************************************************************
 //gets access to the board positions
 char board::check(int x, int y, board& copy){
-    if(array[x-1][y-1]=='X'){
+    if(array[x-1][y-1]=='X')
+    {
         cout<<"Its a hit!"<<endl;
         copy.array[x-1][y-1]='X';
     }
-    else if(array[x-1][y-1]=='-'){
+    else if(array[x-1][y-1]=='-')
+    {
         cout<<"Its a miss!"<<endl;
         copy.array[x-1][y-1]='O';
     }
 }
-
+//******************************************************************************
+//******************************************************************************
+//assigns values to the guess for the player 
+void board::getGess(int x, int y){
+    xGuess=x;   //assigns value to the xGuess private member
+    yGuess=y;   //assigns value to the yGuess private member
+}
 //******************************************************************************
 //******************************************************************************
 //Test to see if user entered values are valid entries

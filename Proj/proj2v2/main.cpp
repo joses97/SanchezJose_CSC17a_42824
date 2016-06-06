@@ -22,7 +22,7 @@ using namespace std;
 void inputS(board&, int);
 char checkC(board, int, int, int, int, int);
 void rules();
-void playG(board&, board&, board&, board&, info[]);
+void enterG(board&, board&, info[], int i);
 
 //Execution begins here
 int main(int argc, char** argv) {
@@ -66,7 +66,14 @@ int main(int argc, char** argv) {
         player2.display();
     }
     
-    playG(player1, player2, copy1, copy2, players);
+    do{
+        enterG(player1, copy1, players, 0);
+        player2.check(player1.getYGss(), player1.getXGss(), copy2);
+        copy2.display();
+        enterG(player2, copy2, players, 1);
+        player1.check(player2.getYGss(), player2.getXGss(), copy1);
+        copy1.display();
+    }while(1);
     
     //delete dynamically created array
     delete [] players;
