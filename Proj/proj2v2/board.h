@@ -10,6 +10,7 @@
 
 //User libraries
 #include "shipps.h"
+#include "plyrInfo.h"
 using namespace std;
 
 //define board.h
@@ -63,6 +64,19 @@ class board : public warShip{
         board operator++(int);//
         board& operator--();//
         board operator--(int);//
+};
+
+//class template
+template <class T>
+class bets{
+    T p1;
+    T p2;
+    public:
+        bets(T a, T b){
+            p1=a;
+            p2=b;
+        }
+        T getBets(){return p1+p2;}
 };
 
 #endif	/* BOARD_H */

@@ -14,7 +14,6 @@ using namespace std;
 
 //user libraries
 #include "board.h"
-#include "plyrInfo.h"
 
 //global constants
 
@@ -26,16 +25,22 @@ void enterG(board&, board&, info[], int i);
 
 //Execution begins here
 int main(int argc, char** argv) {
+    float p1=0;
+    float p2=0;
     bool win=false;
     bool win2=false;
     bool winner=true;
     info *players = new info[NUMPLAY];
+    fstream file;
+    fstream rFile;
     
     //make 4 boards
     board player1;
     board player2;
     board copy1;
     board copy2;
+    board p1Fstrm;
+    board p2Fstrm;
     
     //display the rules of the game
     rules();
@@ -52,10 +57,20 @@ int main(int argc, char** argv) {
     copy2=player2;
     
     //enter the info of the players
-    for(int i=0; i<NUMPLAY; i++){
+    for(int i=0; i<NUMPLAY; i++)
+    {
         cout<<"Enter name of player "<<i+1<<" ";
         getline(cin, players[i].names);
     }
+    
+    cout<<"Enter bet for "<<players[0].names<<endl;
+    cin>>p1;
+    cout<<"Enter bet for "<<players[1].names<<endl;
+    cin>>p2;
+    bets <float> pot(p1, p2);
+    
+    cout<<"The pot is: "<<pot.getBets()<<endl;
+    
     
     for(int i=0; i<NUMSHIP; i++)
     {
@@ -101,21 +116,48 @@ int main(int argc, char** argv) {
     
     if(win==true)
     {
-        cout<<"Congrats to the winner "<<info[0].names<<endl;
+        cout<<"Congrats to the winner "<<players[0].names<<endl;
         cout<<"Displaying statistics"<<endl;
         cout<<"Total Hits:   "<<player1.getHits()<<endl;
         cout<<"Total Misses: "<<player1.getMiss()<<endl;
         cout<<"Total number of guesses: "<<player1.getGss()<<endl;
+        cout<<"The pot awarded: "<<pot.getBets()<<endl;
     }
     
     if(win2==true)
     {
-        cout<<"Congrats to the winner "<<info[1].names<<endl;
+        cout<<"Congrats to the winner "<<players[1].names<<endl;
         cout<<"Displaying statistics"<<endl;
         cout<<"Total Hits:   "<<player2.getHits()<<endl;
         cout<<"Total Misses: "<<player2.getMiss()<<endl;
         cout<<"Total number of guesses: "<<player2.getGss()<<endl;
+        cout<<"The pot awarded: "<<pot.getBets()<<endl;
     }
+    
+    //write object contents to a file "Stats.dat" as binary information
+    file.open("Stats.dat", ios::out | ios::binary);
+    file.write(reinterpret_cast<char *>(&player1), sizeof(player1));
+    file.close();  
+    
+    //open the "Stats.dat" binary file and read it into a structure
+    rFile.open("Stats.dat", ios::in | ios::out | ios::binary);
+    rFile.read(reinterpret_cast<char *>(&p1Fstrm), sizeof(p1Fstrm));
+    //display contents of structure for loop p<NUMPLAY
+    p1Fstrm.display();
+    cout<<players[0].names<<"'s Board"<<endl; //output readIn[p].name
+    
+    //write object contents to a file "Stats.dat" as binary information
+    file.open("Stats2.dat", ios::out | ios::binary);
+    file.write(reinterpret_cast<char *>(&player2), sizeof(player2));
+    file.close();  
+    
+    //open the "Stats2.dat" binary file and read it into a structure
+    rFile.open("Stats2.dat", ios::in | ios::out | ios::binary);
+    rFile.read(reinterpret_cast<char *>(&p2Fstrm), sizeof(p2Fstrm));
+    //display contents of structure for loop p<NUMPLAY
+    p2Fstrm.display();
+    cout<<players[1].names<<"'s Board"<<endl; //output readIn[p].name
+    
     
     //delete dynamically created array
     delete [] players;

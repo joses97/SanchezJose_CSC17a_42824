@@ -30,6 +30,7 @@ class warShip{
         void bShipC(int , int , int , int);
         void setsNam(string n){sName=n;}
         void setSize(int n){size=n;}
+        virtual void info(){};
         int getxpos() const {return xpos;}
         int getypos() const {return ypos;}
         int getfxpos() const {return fxpos;}
