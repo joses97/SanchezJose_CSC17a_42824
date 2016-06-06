@@ -17,10 +17,7 @@ using namespace std;
 //Board.cpp functions held here
 //******************************************************************************
 //initialize static variable to 0
-int board::hits=0;
-//******************************************************************************
-//initialize static variable to 0
-int board::misses=0;
+int board::guesses=0;
 //******************************************************************************
 //******************************************************************************
 //Set static variable of array of 5 to the values of names of ships
@@ -44,9 +41,15 @@ board::board(){
             array[i][j]='-'; //set the private member to - for the grid
         }
     }
+    //initial values to 0
+    hits=0;
+    misses=0;
+    xGuess=0;
+    yGuess=0;
 }
 //******************************************************************************
 //******************************************************************************
+//defaulted constructor
 board::~board(){
     //delete the dynamically created array of ships
     delete [] ships;
@@ -54,16 +57,36 @@ board::~board(){
 //******************************************************************************
 //******************************************************************************
 //gets access to the board positions
+bool board::chekWin(){
+    if(hits>=17)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+//******************************************************************************
+//******************************************************************************
+//gets access to the board positions
 char board::check(int x, int y, board& copy){
+    //check to see if the position entered contains a 'X' 
     if(array[x-1][y-1]=='X')
     {
         cout<<"Its a hit!"<<endl;
-        copy.array[x-1][y-1]='X';
+        copy.array[x-1][y-1]='X'; //place a 'X' for a hit on the copy
+        hits++; //adds one to the hits of the user
+        cout<<"Number of hits   "<<hits<<endl;
+        
     }
+    //if not
     else if(array[x-1][y-1]=='-')
     {
         cout<<"Its a miss!"<<endl;
-        copy.array[x-1][y-1]='O';
+        copy.array[x-1][y-1]='O'; //place a 'O' for a miss on the copy
+        misses++; //adds one to the misses;
+        cout<<"Number of misses   "<<misses<<endl;
     }
 }
 //******************************************************************************
@@ -135,6 +158,7 @@ bool board::testCor(int i, int xOne, int yOne, int xTwo, int yTwo){
 
 //******************************************************************************
 //******************************************************************************
+//set the size of each ship created
 void board::setSize(){
     //loop 5 time to set the size of the ships
     for(int i=0; i<NUMSHIP; i++)
@@ -144,6 +168,7 @@ void board::setSize(){
 }
 //******************************************************************************
 //******************************************************************************
+//set the names of each ship created
 void board::setSNms(){
     //loop 5 times to assign a name to the object
     for(int i=0; i<NUMSHIP; i++)
@@ -153,24 +178,31 @@ void board::setSNms(){
 }
 //******************************************************************************
 //******************************************************************************
+//get the name of the ship requested
 string board::getN(int i){ //returns the name of the ship requested
     return ships[i].getName();
 }
 //******************************************************************************
 //******************************************************************************
+//get the size of the ship requested
 int board::getSzs(int i){ //returns the name of the ship requested
     return ships[i].getSize();
 }
 //******************************************************************************
 //******************************************************************************
+//display the coordinates of the ship requested
 void board::disCoor(int i){
     //Displays the coordinates of the ship at i 
     //output ships[i].getxpos(), ships[i].getypos()
-    cout<<"Ship "<<i+1<<" is located at: "<<ships[i].getxpos()<<" and "
-                        ""<<ships[i].getypos()<<endl;
+    cout<<ships[i].getName()<<" initial position is located at: "
+            ""<<ships[i].getxpos()<<" and "<<ships[i].getypos()<<endl;
+    //output the final x and y position of the ship
+    cout<<ships[i].getName()<<" final position is located at:"
+            " "<<ships[i].getfxpos()<<" and "<<ships[i].getfypos()<<endl;
 }
 //******************************************************************************
 //******************************************************************************
+//assigns one boards 2d array to the other
 void board::operator =(const board& right){
     //= operator copies to board of one board object to another
         for(int i=0; i<SIZE; i++)
@@ -183,6 +215,7 @@ void board::operator =(const board& right){
 }
 //******************************************************************************
 //******************************************************************************
+//makes the ship with the requested parameters 
 void board::makeShp(int i, int a, int b, int c, int d){
     //fill in values for the  initial x and y position
     //c and d are the final x and y position
@@ -190,6 +223,7 @@ void board::makeShp(int i, int a, int b, int c, int d){
 }
 //******************************************************************************
 //******************************************************************************
+//places the ship initial and final positions on the grid
 void board::shipOn(int i){
     //assign the given ship initial coordinates to the array(board) 'X'
     array[ships[i].getypos()-1][ships[i].getxpos()-1]='X';
@@ -198,14 +232,19 @@ void board::shipOn(int i){
 }
 //******************************************************************************
 //******************************************************************************
+//displays the board 
 void board::display(){
+    //character to initiate the loop
     char p='A';
+    //1-10 for the board
     cout<<"    1   2   3   4   5   6   7   8   9   10"<<endl;
+    //loop for 10 times
     for(int i=0; i<SIZE; i++)
-    {
-        cout<<static_cast<char>(p+i); 
+    {   //output static cast of p
+        cout<<static_cast<char>(p+i);
+        //loop 10 time for the columns
         for(int j=0; j<SIZE; j++)
-        {
+        {   //output array[i][j]
             cout<<" | "<<array[i][j];
         }  
         cout<<endl;
@@ -213,6 +252,7 @@ void board::display(){
 }
 //******************************************************************************
 //******************************************************************************
+//fills in the positions from  the initial position selected to the initial
 void board::fillrest(int n){
     //fills in from the initial ship position to the final position for x
     for(int i=ships[n].getxpos(); i<ships[n].getfxpos(); i++)
@@ -239,13 +279,18 @@ board board::operator -(const board &){
 }
 //******************************************************************************
 //******************************************************************************
+//adds one to the total amount of guesses
 board& board::operator++(){
-    
+    guesses+=0;
+    return *this;
 }
 //******************************************************************************
 //******************************************************************************
+//adds one to the total amount of guess, static int 
 board board::operator++(int){
-    
+    board temp = *this;
+    ++*this;
+    return temp;
 }
 //******************************************************************************
 //******************************************************************************

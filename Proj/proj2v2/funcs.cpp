@@ -173,6 +173,8 @@ void enterG(board& player, board& pCopy,  info pInfo[], int i){
     char guess;
     
     //do while guess=='N'
+    cout<<"Displaying "<<pInfo[i].names<<" HIT/MISS board"<<endl;
+    pCopy.display();
     do{
         cout<<"Enter guess "<<pInfo[i].names<<endl;
         cout<<"Enter guess for the Y Position (A-J)"<<endl;

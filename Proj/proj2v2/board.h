@@ -24,8 +24,9 @@ const int NUMPLAY=2; //number of players
 //create class board, inherit from warShip to gain access to protected members
 class board : public warShip{
     private:
-        static int hits; //count
-        static int misses;
+        int hits; //total number of hits
+        int misses; //total number of misses
+        static int guesses; //total number of guesses
         static int sizes[NUMSHIP]; //sizes of the ship
         static string names[NUMSHIP]; //names of the ships
         char array[SIZE][SIZE]; //holds the board information
@@ -46,11 +47,14 @@ class board : public warShip{
         void display();     //diplay the 2d array
         void fillrest(int); //fills in the values
         void getGess(int, int); //assigns values to the class for the users guesses
+        bool chekWin();     //checks to see if the users win
         char check(int, int, board&); //checks to see if coordinates contain ship
         int getSzs(int);    //get the size of the current ship
+        int getGss(){return guesses;} //gets the total number of guesses in game
+        int getHits(){return hits;} //gets the hits 
+        int getMiss(){return misses;} //gets the misses
         int getXGss(){return xGuess;} //return the users x value guess
         int getYGss(){return yGuess;}   //return the users y value guess 
-        int getNumS(){return totShip;} //returns the number of ships created
         bool testCor(int, int, int, int, int);//tests the coordinates of the 
         operator int(){ return (hits+misses); } //returns the count
         board operator +(const board &);    //

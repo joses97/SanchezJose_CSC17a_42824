@@ -26,7 +26,9 @@ void enterG(board&, board&, info[], int i);
 
 //Execution begins here
 int main(int argc, char** argv) {
-    int count;
+    bool win=false;
+    bool win2=false;
+    bool winner=true;
     info *players = new info[NUMPLAY];
     
     //make 4 boards
@@ -55,25 +57,65 @@ int main(int argc, char** argv) {
         getline(cin, players[i].names);
     }
     
-    for(int i=0; i<NUMSHIP; i++){
+    for(int i=0; i<NUMSHIP; i++)
+    {
         player1.display();
         inputS(player1, i);
         player1.display();
     }
-    for(int i=0; i<NUMSHIP; i++){
+    cout<<endl<<endl<<endl;
+    for(int i=0; i<NUMSHIP; i++)
+    {
         player2.display();
         inputS(player2, i);
         player2.display();
     }
-    
-    do{
+    cout<<endl<<endl<<endl;
+    while(winner)
+    {
+        //enter the gueeses for player 1
         enterG(player1, copy1, players, 0);
-        player2.check(player1.getYGss(), player1.getXGss(), copy2);
-        copy2.display();
+        player2.check(player1.getYGss(), player1.getXGss(), copy1);
+        copy1.display(); //show player 1 guess
+        cin.ignore();
+        cout<<"Press enter to continue to the next player"<<endl;
+        cin.ignore();
+        win=player1.chekWin(); //check for the win
+        if(win==true)
+        {
+            winner=false;
+        }
+        //enter guesses for player 2
         enterG(player2, copy2, players, 1);
-        player1.check(player2.getYGss(), player2.getXGss(), copy1);
-        copy1.display();
-    }while(1);
+        player1.check(player2.getYGss(), player2.getXGss(), copy2);
+        copy2.display();
+        cin.ignore();
+        cout<<"Press enter to continue to the next player"<<endl;
+        cin.ignore();
+        win2=player2.chekWin(); //check for the win 
+        if(win2==true)
+        {
+            winner=false;
+        }    
+    }
+    
+    if(win==true)
+    {
+        cout<<"Congrats to the winner "<<info[0].names<<endl;
+        cout<<"Displaying statistics"<<endl;
+        cout<<"Total Hits:   "<<player1.getHits()<<endl;
+        cout<<"Total Misses: "<<player1.getMiss()<<endl;
+        cout<<"Total number of guesses: "<<player1.getGss()<<endl;
+    }
+    
+    if(win2==true)
+    {
+        cout<<"Congrats to the winner "<<info[1].names<<endl;
+        cout<<"Displaying statistics"<<endl;
+        cout<<"Total Hits:   "<<player2.getHits()<<endl;
+        cout<<"Total Misses: "<<player2.getMiss()<<endl;
+        cout<<"Total number of guesses: "<<player2.getGss()<<endl;
+    }
     
     //delete dynamically created array
     delete [] players;
