@@ -49,6 +49,7 @@ class board : public warShip{
         void fillrest(int); //fills in the values
         void getGess(int, int); //assigns values to the class for the users guesses
         bool chekWin();     //checks to see if the users win
+        char getGrd(int, int);  //gets the grid location                    
         char check(int, int, board&); //checks to see if coordinates contain ship
         int getSzs(int);    //get the size of the current ship
         int getGss(){return guesses;} //gets the total number of guesses in game
@@ -59,24 +60,15 @@ class board : public warShip{
         bool testCor(int, int, int, int, int);//tests the coordinates of the 
         operator int(){ return (hits+misses); } //returns the count
         board operator +(const board &);    //
-        board operator -(const board &);    //
         board& operator++(); //
-        board operator++(int);//
-        board& operator--();//
-        board operator--(int);//
+        board operator++(int);// adds one to guess
 };
 
-//class template
-template <class T>
-class bets{
-    T p1;
-    T p2;
+//class to display polymorphism 
+//couldn't find a real use for polymorphism, I understand it.
+class poly: public warShip{
     public:
-        bets(T a, T b){
-            p1=a;
-            p2=b;
-        }
-        T getBets(){return p1+p2;}
+        void info(){ cout<<"Polymorphism!, Could not find use for this."<<endl;}
 };
 
 #endif	/* BOARD_H */

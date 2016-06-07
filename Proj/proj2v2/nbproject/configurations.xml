@@ -4,6 +4,7 @@
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
+      <itemPath>bets.h</itemPath>
       <itemPath>board.h</itemPath>
       <itemPath>plyrInfo.h</itemPath>
       <itemPath>shipps.h</itemPath>
@@ -42,6 +43,8 @@
       </toolsSet>
       <compileType>
       </compileType>
+      <item path="bets.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="board.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="board.h" ex="false" tool="3" flavor2="0">
@@ -77,6 +80,8 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
+      <item path="bets.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="board.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="board.h" ex="false" tool="3" flavor2="0">

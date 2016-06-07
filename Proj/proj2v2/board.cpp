@@ -57,6 +57,12 @@ board::~board(){
 //******************************************************************************
 //******************************************************************************
 //gets access to the board positions
+char board::getGrd(int x, int y){
+    return array[x-1][y-1];
+}
+//******************************************************************************
+//******************************************************************************
+//gets access to the board positions
 bool board::chekWin(){
     if(hits>=17)
     {
@@ -73,11 +79,19 @@ bool board::chekWin(){
 char board::check(int x, int y, board& copy){
     //check to see if the position entered contains a 'X' 
     if(array[x-1][y-1]=='X')
-    {
-        cout<<"Its a hit!"<<endl;
-        copy.array[x-1][y-1]='X'; //place a 'X' for a hit on the copy
-        hits++; //adds one to the hits of the user
-        cout<<"Number of hits   "<<hits<<endl;
+    {   //if    copy.array[x-1][y-1]=='X'
+        if(copy.array[x-1][y-1]=='X')
+        {   //output
+            cout<<"This space has already been hit!"<<endl;
+        }
+        else 
+        {   
+            cout<<"Its a hit!"<<endl;
+            copy.array[x-1][y-1]='X'; //place a 'X' for a hit on the copy
+            hits++; //adds one to the hits of the user
+            guesses++;  //add one to guesses
+            cout<<"Number of hits   "<<hits<<endl; //output hits
+        }
         
     }
     //if not
@@ -86,7 +100,8 @@ char board::check(int x, int y, board& copy){
         cout<<"Its a miss!"<<endl;
         copy.array[x-1][y-1]='O'; //place a 'O' for a miss on the copy
         misses++; //adds one to the misses;
-        cout<<"Number of misses   "<<misses<<endl;
+        guesses++; //add one to guesses
+        cout<<"Number of misses   "<<misses<<endl; //output misses
     }
 }
 //******************************************************************************
@@ -274,11 +289,6 @@ board board::operator +(const board &){
 }
 //******************************************************************************
 //******************************************************************************
-board board::operator -(const board &){
-    
-}
-//******************************************************************************
-//******************************************************************************
 //adds one to the total amount of guesses
 board& board::operator++(){
     guesses+=0;
@@ -291,14 +301,4 @@ board board::operator++(int){
     board temp = *this;
     ++*this;
     return temp;
-}
-//******************************************************************************
-//******************************************************************************
-board& board::operator--(){
-    
-}
-//******************************************************************************
-//******************************************************************************
-board board::operator--(int){
-    
 }
