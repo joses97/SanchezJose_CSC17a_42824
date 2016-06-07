@@ -6,9 +6,7 @@
  */
 
 //System Libraries 
-#include <cstdlib>
 #include <iostream>
-#include <cmath>
 #include <fstream>
 using namespace std;
 
@@ -26,14 +24,14 @@ void enterG(board&, board&, info[], int i);
 void names(info[]);
 //Execution begins here
 int main(int argc, char** argv) {
-    float p1=0;
-    float p2=0;
-    bool win=false;
-    bool win2=false;
-    bool winner=true;
-    info *players = new info[NUMPLAY];
-    fstream file;
-    fstream rFile;
+    float p1=0; //player 1 bet
+    float p2=0; //player 2 bet
+    bool win=false; //win for player 1
+    bool win2=false;    //win for player 2
+    bool winner=true;   //winner=true
+    info *players = new info[NUMPLAY];  //dynamic array of structs
+    fstream file;   //file 
+    fstream rFile;  //rFile
     
     //display of polymorphism knowledge.
     poly forPoly;
