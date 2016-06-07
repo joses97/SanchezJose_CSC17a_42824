@@ -36,8 +36,8 @@ int main(int argc, char** argv) {
     fstream rFile;
     
     //display of polymorphism knowledge.
-    poly poop;
-    warShip *test = &poop;
+    poly forPoly;
+    warShip *test = &forPoly;
     test->info();
     
     //make 4 boards

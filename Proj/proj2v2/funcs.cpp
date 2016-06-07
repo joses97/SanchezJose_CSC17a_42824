@@ -248,7 +248,7 @@ void enterG(board& player, board& pCopy,  info pInfo[], int i){
     }while(toupper(guess)!='Y');
     player.getGess(xVal, y1);
 }
-//sort the names by alphabetical order, then show user sorted names
+//CODE PULLED FROM PREVIOUS PROJECT DR LEHR!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 //******************************************************************************
 //******************************************************************************
 void names(info sortN[]){
@@ -264,11 +264,13 @@ void names(info sortN[]){
     char* name2 = new char[size2];  //name 2 dynamic array
     
     //fill character arrays with for loop i=0; i<size1; i++
-    for(int i=0; i<size1; i++){
+    for(int i=0; i<size1; i++)
+    {
         name1[i]=sortN[p1].names[i];  //name1[i]=sortN[p1].name[i]
     }
     
-    for(int i=0; i<size2; i++){     //i=0; i<size2; i++
+    for(int i=0; i<size2; i++)
+    {     //i=0; i<size2; i++
         name2[i]=sortN[p2].names[i]; //name2[i]=sortN[p2].name[i];
     }
     
@@ -300,14 +302,16 @@ void names(info sortN[]){
     
     //output sorted names for player 1
     cout<<sortN[p1].names<<"'s name sorted by alphabetical order is: ";
-    for(int i=0; i<size1; i++){ //for loop i=0; i<size1; i++
+    for(int i=0; i<size1; i++)
+    { //for loop i=0; i<size1; i++
         cout<<*(name1+i);       //output *(name1+i)
     }
     
     //output sorted name for player 2
     cout<<endl<<endl;
     cout<<sortN[p2].names<<"'s name sorted by alphabetical order is:  ";
-    for(int i=0; i<size2; i++){ //for loop i=0; i<size2; i++
+    for(int i=0; i<size2; i++)
+    { //for loop i=0; i<size2; i++
         cout<<name2[i];         //output name2[i];
     }
     cout<<endl<<endl;
