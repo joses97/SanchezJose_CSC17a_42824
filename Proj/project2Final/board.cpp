@@ -132,40 +132,39 @@ bool board::testCor(int i, int xOne, int yOne, int xTwo, int yTwo){
         test2=true; //if true set test2 to true, shows y is a constant
     }
     
-    //try to see if any errors occured
-        //test for x and y constance
-        if(test1&&test2)
-        {
-            throw invalid();//if both x and y are constant return false, bad input
-            return false;   //return false for bad input
-        }
+    //test for x and y constance
+    if(test1&&test2)
+    {
+        throw invalid();//if both x and y are constant return false, bad input
+        return false;   //return false for bad input
+    }
 
-        // if test 1 was the constant test for the difference in y coordinates
-        else if(test1)
-        {
-            if(abs(yOne-yTwo-1)==size)
-            { //if difference is equal to size
-                return true;    //return true for good input
-            }
-            else
-            {   //else
-                throw invalid(); //throw invalid for bad input
-                return false;   //return false for a bad input
-            }   
+    // if test 1 was the constant test for the difference in y coordinates
+    else if(test1)
+    {
+        if(abs(yOne-yTwo-1)==size)
+        { //if difference is equal to size
+            return true;    //return true for good input
         }
-        //if test 2 was the constant test for the difference in x coordinates
-        else if(test2)
+        else
+        {   //else
+            throw invalid(); //throw invalid for bad input
+            return false;   //return false for a bad input
+        }   
+    }
+    //if test 2 was the constant test for the difference in x coordinates
+    else if(test2)
+    {
+        if(abs(xOne-xTwo-1)==size) //if difference in x was = to size
+        { 
+            return true;    //return true for good input
+        }   
+        else
         {
-            if(abs(xOne-xTwo-1)==size) //if difference in x was = to size
-            { 
-                return true;    //return true for good input
-            }   
-            else
-            {
-                throw invalid(); //throw invalid for bad input
-                return false; //return false for a bad input
-            }
+            throw invalid(); //throw invalid for bad input
+            return false; //return false for a bad input
         }
+    }
     //if for some reason all tests failed, 
     throw invalid();    //throw invalid
     return false;       //return false

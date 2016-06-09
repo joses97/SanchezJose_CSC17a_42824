@@ -9,19 +9,19 @@ CND_DISTDIR=dist
 # Debug configuration
 CND_PLATFORM_Debug=Cygwin-Windows
 CND_ARTIFACT_DIR_Debug=dist/Debug/Cygwin-Windows
-CND_ARTIFACT_NAME_Debug=proj2v2
-CND_ARTIFACT_PATH_Debug=dist/Debug/Cygwin-Windows/proj2v2
+CND_ARTIFACT_NAME_Debug=project2final
+CND_ARTIFACT_PATH_Debug=dist/Debug/Cygwin-Windows/project2final
 CND_PACKAGE_DIR_Debug=dist/Debug/Cygwin-Windows/package
-CND_PACKAGE_NAME_Debug=proj2v2.tar
-CND_PACKAGE_PATH_Debug=dist/Debug/Cygwin-Windows/package/proj2v2.tar
+CND_PACKAGE_NAME_Debug=project2final.tar
+CND_PACKAGE_PATH_Debug=dist/Debug/Cygwin-Windows/package/project2final.tar
 # Release configuration
 CND_PLATFORM_Release=Cygwin-Windows
 CND_ARTIFACT_DIR_Release=dist/Release/Cygwin-Windows
-CND_ARTIFACT_NAME_Release=proj2v2
-CND_ARTIFACT_PATH_Release=dist/Release/Cygwin-Windows/proj2v2
+CND_ARTIFACT_NAME_Release=project2final
+CND_ARTIFACT_PATH_Release=dist/Release/Cygwin-Windows/project2final
 CND_PACKAGE_DIR_Release=dist/Release/Cygwin-Windows/package
-CND_PACKAGE_NAME_Release=proj2v2.tar
-CND_PACKAGE_PATH_Release=dist/Release/Cygwin-Windows/package/proj2v2.tar
+CND_PACKAGE_NAME_Release=project2final.tar
+CND_PACKAGE_PATH_Release=dist/Release/Cygwin-Windows/package/project2final.tar
 #
 # include compiler specific variables
 #
