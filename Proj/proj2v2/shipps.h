@@ -18,25 +18,25 @@ using namespace std;
 //create class warShip
 class warShip{
     protected:
-        string sName;
-        int size;
-        int xpos;
-        int ypos;
-        int fxpos;
-        int fypos;
-        static int totShip;
+        string sName; //name of ship
+        int size;   //size of ship
+        int xpos;   //x position of ship    
+        int ypos;   //y position of ship
+        int fxpos;  //final x position of ship
+        int fypos;  //final y position of ship
+        static int totShip; //keeps count of number of ships
     public:
-        warShip();
-        void bShipC(int , int , int , int);
-        void setsNam(string n){sName=n;}
-        void setSize(int n){size=n;}
-        virtual void info(){};
-        int getxpos() const {return xpos;}
-        int getypos() const {return ypos;}
-        int getfxpos() const {return fxpos;}
-        int getfypos() const {return fypos;}
-        int getSize() const {return size;}
-        string getName() const {return sName;}
+        warShip();  //constructor
+        void bShipC(int , int , int , int); //creates ships
+        void setsNam(string n){sName=n;} //sets the name of the ship
+        void setSize(int n){size=n;}        //sets the size of the ship
+        virtual void info(){};      //for polymorphism 
+        int getxpos() const {return xpos;}  //gets x position
+        int getypos() const {return ypos;}  //gets y position
+        int getfxpos() const {return fxpos;}    //gets final x position
+        int getfypos() const {return fypos;}    //gets final y position
+        int getSize() const {return size;}      //gets the size of the ship
+        string getName() const {return sName;}  //gets the name of the ship
 };
 #endif /* SHIPPS_H */
 
