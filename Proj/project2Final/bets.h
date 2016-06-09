@@ -1,7 +1,7 @@
 /* 
- * File:   main.cpp
+ * File:   bets.h
  * Author: Jose Sanchez
- * Purpose: hold main functions
+ * Purpose: bets file
  * Created on June 4th 2016
  */
 

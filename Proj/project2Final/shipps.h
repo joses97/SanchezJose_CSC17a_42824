@@ -1,7 +1,7 @@
 /* 
- * File:   main.cpp
+ * File:   shipps.h
  * Author: Jose Sanchez
- * Purpose: Battleship
+ * Purpose: ship class
  * Created on June 4th 2016
  */
 

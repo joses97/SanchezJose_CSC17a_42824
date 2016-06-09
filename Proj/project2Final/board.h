@@ -1,7 +1,7 @@
 /* 
- * File:   main.cpp
+ * File:   board.h
  * Author: Jose Sanchez
- * Purpose: Battleship
+ * Purpose: class board
  * Created on June 4th 2016
  */
 

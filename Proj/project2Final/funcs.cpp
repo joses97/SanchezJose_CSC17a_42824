@@ -1,5 +1,5 @@
 /* 
- * File:   main.cpp
+ * File:  funcs.cpp
  * Author: Jose Sanchez
  * Purpose: hold main functions
  * Created on June 4th 2016

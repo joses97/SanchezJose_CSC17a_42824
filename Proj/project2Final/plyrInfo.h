@@ -1,7 +1,7 @@
 /* 
- * File:   main.cpp
+ * File:   playrInfo.h
  * Author: Jose Sanchez
- * Purpose: Battleship
+ * Purpose: hold player info
  * Created on June 4th 2016
  */
 
